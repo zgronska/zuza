@@ -1,3 +1,4 @@
 @import 'typography' layer(typography);
+@import 'utilities' layer(utilities);
 
-@layer typography;
+@layer typography, utilities;

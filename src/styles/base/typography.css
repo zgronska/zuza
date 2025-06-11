@@ -29,3 +29,7 @@ h1 {
     font-weight: var(--fw-heading);
     line-height: var(--lh-heading);
 }
+
+a {
+    color: var(--link-color, var(--clr-dark));
+}
