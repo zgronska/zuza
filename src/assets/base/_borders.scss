@@ -1,0 +1,22 @@
+/*
+ * Property definitions
+ * ---------------------------- */
+@property --border-width-sm {
+    syntax: '<length>';
+    initial-value: 2px;
+    inherits: false;
+}
+@property --border-width {
+    syntax: '<length>';
+    initial-value: 4px;
+    inherits: false;
+}
+
+/*
+ * Components
+ * ---------------------------- */
+:root {
+    --border-color: var(--clr-dark);
+    --box-shadow: var(--border-width) var(--border-width) 0 0 var(--border-color);
+    --box-shadow-sm: var(--border-width-sm) var(--border-width-sm) 0 0 var(--border-color);
+}
