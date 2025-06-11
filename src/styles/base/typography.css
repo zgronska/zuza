@@ -1,9 +1,9 @@
 body {
+    color: var(--clr-dark);
     font-family: var(--font-family), sans-serif;
     font-size: var(--fs-100);
-    line-height: var(--lh);
     font-weight: var(--fw);
-    color: var(--clr-dark);
+    line-height: var(--lh);
 }
 
 h6 {
