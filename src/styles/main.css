@@ -1,3 +1,4 @@
 @import 'reset' layer(reset);
+@import 'properties/colors' layer(colors);
 
-@layer reset;
+@layer reset, colors;

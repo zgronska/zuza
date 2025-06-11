@@ -1,0 +1,50 @@
+/*
+ * Property definitions
+ * ---------------------------- */
+@property --clr-blue {
+    syntax: '<color>';
+    initial-value: rgb(118 218 235);
+    inherits: false;
+}
+@property --clr-lightpink {
+    syntax: '<color>';
+    initial-value: rgb(234 170 221);
+    inherits: false;
+}
+@property --clr-darkpink {
+    syntax: '<color>';
+    initial-value: rgb(200 114 179);
+    inherits: false;
+}
+@property --clr-yellow {
+    syntax: '<color>';
+    initial-value: rgb(255 214 0);
+    inherits: false;
+}
+@property --clr-purple {
+    syntax: '<color>';
+    initial-value: rgb(170 155 243);
+    inherits: false;
+}
+@property --clr-green {
+    syntax: '<color>';
+    initial-value: rgb(204 255 0);
+    inherits: false;
+}
+@property --clr-dark {
+    syntax: '<color>';
+    initial-value: rgb(15 15 15);
+    inherits: false;
+}
+@property --clr-light {
+    syntax: '<color>';
+    initial-value: rgb(245 245 245);
+    inherits: false;
+}
+
+/*
+ * Components
+ * ---------------------------- */
+:root {
+    --text-color: var(--clr-dark);
+}
