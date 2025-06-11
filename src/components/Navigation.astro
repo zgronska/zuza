@@ -1,0 +1,62 @@
+---
+const navLinks = [
+    { href: '/', label: 'Home' },
+    { href: '/skills', label: 'Skills' },
+    { href: '/contact', label: 'Contact' }
+]
+---
+
+<nav class="border-sm shadow-sm">
+    <ul>
+        {
+            navLinks.map((link) => (
+                <li class="border-sm">
+                    <a href={link.href}>{link.label}</a>
+                </li>
+            ))
+        }
+    </ul>
+</nav>
+
+<style>
+    nav {
+        position: fixed;
+        inline-size: fit-content;
+        margin-inline: auto;
+        background-color: var(--clr-yellow);
+        text-align: center;
+        inset-block-end: var(--space-200);
+        inset-inline-end: var(--space-200);
+
+        @media screen and (width >= 576px) {
+            font-size: var(--fs-200);
+            inset-block: var(--space-500) auto;
+            inset-inline: var(--space-200);
+        }
+    }
+
+    ul {
+        display: flex;
+        justify-content: center;
+        margin: calc(var(--border-width-sm) * -1);
+    }
+
+    li {
+        flex: 1;
+
+        &:not(:first-child) {
+            margin-inline-start: calc(var(--border-width-sm) * -1);
+        }
+    }
+
+    a {
+        display: inline-block;
+        inline-size: 100%;
+        padding: var(--space-200) var(--space-400);
+        text-decoration: none;
+
+        &:where(:hover, :focus-visible) {
+            background-color: var(--clr-blue);
+        }
+    }
+</style>

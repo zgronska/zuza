@@ -2,6 +2,8 @@
 import '@fontsource-variable/sora';
 import '../styles/main.css';
 
+import Navigation from '../components/Navigation.astro';
+
 const { pageTitle } = Astro.props;
 ---
 
@@ -14,6 +16,7 @@ const { pageTitle } = Astro.props;
 		<title>{pageTitle}</title>
 	</head>
 	<body>
+		<Navigation />
 		<h1>{pageTitle}</h1>
 		<slot />
 	</body>
