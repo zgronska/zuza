@@ -1,4 +1,5 @@
 @import 'colors' layer(colors);
 @import 'typography' layer(typography);
+@import 'borders' layer(borders);
 
-@layer colors, typography;
+@layer colors, typography, borders;
