@@ -41,10 +41,3 @@
     initial-value: rgb(245 245 245);
     inherits: false;
 }
-
-/*
- * Components
- * ---------------------------- */
-:root {
-    --text-color: var(--clr-dark);
-}

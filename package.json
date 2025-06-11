@@ -9,6 +9,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@fontsource-variable/sora": "^5.2.6",
     "astro": "^5.9.2"
   },
   "devDependencies": {

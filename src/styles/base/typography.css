@@ -1,0 +1,31 @@
+body {
+    font-family: var(--font-family), sans-serif;
+    font-size: var(--fs-100);
+    line-height: var(--lh);
+    font-weight: var(--fw);
+    color: var(--clr-dark);
+}
+
+h6 {
+    font-size: var(--fs-100);
+}
+h5 {
+    font-size: var(--fs-200);
+}
+h4 {
+    font-size: var(--fs-300);
+}
+h3 {
+    font-size: var(--fs-400);
+}
+h2 {
+    font-size: var(--fs-500);
+}
+h1 {
+    font-size: var(--fs-600);
+}
+
+:where(h1, h2, h3, h4, h5, h6) {
+    font-weight: var(--fw-heading);
+    line-height: var(--lh-heading);
+}
