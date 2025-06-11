@@ -1,0 +1,15 @@
+@property --outline-size {
+    syntax: '*';
+    initial-value: max(2px, 0.08em);
+    inherits: true;
+}
+@property --outline-style {
+    syntax: 'auto | none | dotted | dashed | solid | double | groove | ridge | inset | outset';
+    initial-value: dashed;
+    inherits: true;
+}
+@property --outline-color {
+    syntax: '<color>';
+    initial-value: currentColor;
+    inherits: true;
+}

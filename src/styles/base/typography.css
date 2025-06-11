@@ -31,5 +31,11 @@ h1 {
 }
 
 a {
+    text-decoration-thickness: max(0.08em, 1px);
+    text-underline-offset: 0.15em;
     color: var(--link-color, var(--clr-dark));
+
+    &:where(:hover, :focus-visible) {
+        text-decoration: none;
+    }
 }

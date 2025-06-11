@@ -1,0 +1,15 @@
+:is(a, button, input, textarea, summary) {
+    &:focus {
+        outline: var(--outline-size) var(--outline-style) var(--outline-color);
+        outline-offset: var(--outline-offset, var(--outline-size));
+    }
+
+    &:focus:not(:focus-visible) {
+        outline: none;
+    }
+
+    &:focus-visible {
+        outline: var(--outline-size) var(--outline-style) var(--outline-color);
+        outline-offset: var(--outline-offset, var(--outline-size));
+    }
+}
