@@ -17,9 +17,19 @@ const { pageTitle } = Astro.props
     </head>
     <body>
         <Navigation />
-        <h1>{pageTitle}</h1>
         <main>
             <slot />
         </main>
     </body>
 </html>
+
+<style>
+    body {
+        display: grid;
+        place-items: center;
+    }
+
+    main {
+        inline-size: min(100% - var(--space-400) * 2, 50rem);
+    }
+</style>

@@ -16,9 +16,13 @@
     }
 }
 
+html {
+    block-size: 100%;
+}
+
 body {
+    block-size: inherit;
     -webkit-font-smoothing: antialiased;
-    line-height: 1.5;
 }
 
 :where(img, picture, video, canvas, svg, iframe) {
