@@ -16,6 +16,18 @@
 .shadow-sm {
     box-shadow: var(--box-shadow-sm);
 }
+.shape-shadow {
+    --shadow-color: var(--clr-light);
+    filter: drop-shadow(
+        var(--shape-shadow-x-sm) var(--shape-shadow-y-sm) 0 var(--shadow-color)
+    );
+
+    @media screen and (width >= 36em) {
+        filter: drop-shadow(
+            var(--shape-shadow-x) var(--shape-shadow-y) 0 var(--shadow-color)
+        );
+    }
+}
 /*
  * Backgrounds
  * ---------------------------- */

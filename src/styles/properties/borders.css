@@ -12,6 +12,26 @@
     initial-value: 4px;
     inherits: false;
 }
+@property --shape-shadow-x-sm {
+    syntax: '<length>';
+    initial-value: 3px;
+    inherits: true;
+}
+@property --shape-shadow-x {
+    syntax: '<length>';
+    initial-value: 8px;
+    inherits: true;
+}
+@property --shape-shadow-y-sm {
+    syntax: '<length>';
+    initial-value: 2px;
+    inherits: true;
+}
+@property --shape-shadow-y {
+    syntax: '<length>';
+    initial-value: 6px;
+    inherits: true;
+}
 
 /*
  * Components
