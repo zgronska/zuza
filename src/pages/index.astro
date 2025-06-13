@@ -1,6 +1,13 @@
 ---
+export const prerender = false
+
 import BaseLayout from '../layouts/BaseLayout.astro'
 import Card from '../components/Card.astro'
+
+if (!Astro.cookies.has('visited')) {
+    Astro.cookies.set('visited', String('true'))
+    return Astro.rewrite('/welcome')
+}
 ---
 
 <BaseLayout pageTitle="Home">
