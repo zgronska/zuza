@@ -4,7 +4,7 @@ import '../styles/main.css'
 
 import Navigation from '../components/Navigation.astro'
 
-const { pageTitle } = Astro.props
+const { pageTitle, class: className, ...rest } = Astro.props
 ---
 
 <html lang="en">
@@ -15,7 +15,7 @@ const { pageTitle } = Astro.props
         <meta name="generator" content={Astro.generator} />
         <title>{pageTitle}</title>
     </head>
-    <body>
+    <body class={className} {...rest}>
         <Navigation />
         <main>
             <slot />
@@ -30,6 +30,6 @@ const { pageTitle } = Astro.props
     }
 
     main {
-        inline-size: min(100% - var(--space-400) * 2, 50rem);
+        inline-size: min(100% - var(--space-400) * 2, 75rem);
     }
 </style>

@@ -1,5 +1,6 @@
 @import 'typography' layer(typography);
 @import 'utilities' layer(utilities);
 @import 'outline' layer(outline);
+@import 'keyframes' layer(keyframes);
 
-@layer typography, utilities, outline;
+@layer typography, keyframes, utilities, outline;
