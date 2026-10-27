@@ -22,10 +22,6 @@
   --color-highlight: #ffd23f;
   --color-highlight-foreground: #1a1a1a;
 
-  --font-display: 'Bricolage Grotesque', 'Arial Black', sans-serif;
-  --font-serif: Newsreader, Georgia, 'Times New Roman', serif;
-  --font-mono: 'Space Mono', 'Courier New', monospace;
-
   --text-hero: clamp(3.75rem, 6vw, 6rem);
   --text-display: clamp(2.5rem, 7vw, 6rem);
 
@@ -52,6 +48,12 @@
       transform: translateY(16px);
     }
   }
+}
+
+@theme inline {
+  --font-display: var(--font-bricolage-grotesque);
+  --font-serif: var(--font-newsreader);
+  --font-mono: var(--font-space-mono);
 }
 
 @layer base {
