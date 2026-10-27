@@ -1,0 +1,67 @@
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
+
+@theme {
+  --color-background: #fff4e0;
+  --color-surface: #ffffff;
+  --color-foreground: #1a1a1a;
+  --color-muted-foreground: #5c5346;
+  --color-border: var(--color-foreground);
+
+  --color-primary: #ff6b35;
+  --color-primary-hover: #ff8a5c;
+  --color-primary-active: #e85a26;
+  --color-primary-focus: #c2410c;
+  --color-primary-foreground: #1a1a1a;
+
+  --color-accent: #9db2ff;
+  --color-accent-hover: #b4c4ff;
+  --color-accent-active: #7f98f5;
+  --color-accent-focus: #3346c4;
+  --color-accent-foreground: #1a1a1a;
+
+  --color-highlight: #ffd23f;
+  --color-highlight-foreground: #1a1a1a;
+
+  --font-display: 'Bricolage Grotesque', 'Arial Black', sans-serif;
+  --font-serif: Newsreader, Georgia, 'Times New Roman', serif;
+  --font-mono: 'Space Mono', 'Courier New', monospace;
+
+  --text-hero: clamp(3.75rem, 6vw, 6rem);
+  --text-display: clamp(2.5rem, 7vw, 6rem);
+
+  --shadow-sm: 2px 2px 0 0 var(--color-foreground);
+  --shadow-md: 4px 4px 0 0 var(--color-foreground);
+  --shadow-lg: 6px 6px 0 0 var(--color-foreground);
+  --shadow-xl: 10px 10px 0 0 var(--color-foreground);
+
+  --animate-marquee: marquee 40s linear infinite;
+  --animate-fade-up: fade-up 420ms ease-out both;
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+  }
+}
+
+@layer base {
+  [data-theme='dark'] {
+    --color-background: #16130f;
+    --color-surface: #241f19;
+    --color-foreground: #fff4e0;
+    --color-muted-foreground: #b8ad9b;
+    --color-border: var(--color-foreground);
+    --color-primary-focus: #ff9f75;
+    --color-accent-focus: #c2cfff;
+  }
+}
