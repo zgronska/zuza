@@ -1,0 +1,37 @@
+---
+import type { ComponentProps, HTMLAttributes } from 'astro/types';
+import Badge from '../atoms/Badge.astro';
+
+type BadgeProps = ComponentProps<typeof Badge>;
+
+interface Props extends HTMLAttributes<'ul'> {
+  items: string[];
+  size?: BadgeProps['size'];
+  variant?: BadgeProps['variant'];
+  stagger?: boolean;
+}
+
+const {
+  items,
+  size,
+  variant,
+  stagger = false,
+  class: className,
+  ...attrs
+} = Astro.props;
+---
+
+<ul class:list={['flex flex-wrap gap-2.5', className]} {...attrs}>
+  {
+    items.map((item, index) => (
+      <li
+        class:list={{ stagger }}
+        style={stagger ? `--stagger-index: ${index}` : undefined}
+      >
+        <Badge size={size} variant={variant}>
+          {item}
+        </Badge>
+      </li>
+    ))
+  }
+</ul>
