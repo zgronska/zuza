@@ -37,7 +37,7 @@ const socialLinkEntries = Object.entries(SOCIAL_LINKS) as [
                 aria-current={
                   isCurrentPage(Astro.url.pathname, href) ? 'page' : undefined
                 }
-                class="flex items-center justify-between gap-4 rounded-lg border-3 border-border bg-surface px-5 py-3.5 font-display text-4xl font-extrabold tracking-tight shadow-md hover:-translate-0.5 hover:bg-background hover:shadow-lg focus-visible:-translate-0.5 focus-visible:shadow-lg focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-accent-focus active:translate-1 active:shadow-none aria-[current=page]:bg-accent aria-[current=page]:text-accent-foreground aria-[current=page]:hover:bg-accent-hover motion-safe:transition-[translate,box-shadow,background-color] motion-safe:duration-200 motion-safe:ease-out"
+                class="flex items-center justify-between gap-4 rounded-lg border-3 border-border bg-surface px-5 py-3.5 font-display text-4xl font-extrabold tracking-tight shadow-md hover:bg-background hover:shadow-lg focus-visible:shadow-lg focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-accent-focus active:shadow-none aria-[current=page]:bg-accent aria-[current=page]:text-accent-foreground aria-[current=page]:hover:bg-accent-hover motion-safe:transition-[translate,box-shadow,background-color] motion-safe:duration-200 motion-safe:ease-out motion-safe:hover:-translate-0.5 motion-safe:focus-visible:-translate-0.5 motion-safe:active:translate-1"
               >
                 <span>{label}</span>
                 <span class="text-label" aria-hidden="true">

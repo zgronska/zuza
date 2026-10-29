@@ -36,7 +36,7 @@ function getNavLabelTransitionName(href: string) {
                 aria-current={
                   isCurrentPage(Astro.url.pathname, href) ? 'page' : undefined
                 }
-                class="relative isolate inline-flex min-h-11 items-center rounded-full border-2 border-transparent px-4.5 py-2 font-display font-bold hover:-translate-px hover:border-border hover:shadow-sm focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-accent-focus aria-[current=page]:text-accent-foreground motion-safe:transition-[translate,box-shadow] motion-safe:duration-200 motion-safe:ease-out"
+                class="relative isolate inline-flex min-h-11 items-center rounded-full border-2 border-transparent px-4.5 py-2 font-display font-bold hover:border-border hover:shadow-sm focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-accent-focus aria-[current=page]:text-accent-foreground motion-safe:transition-[translate,box-shadow] motion-safe:duration-200 motion-safe:ease-out motion-safe:hover:-translate-px"
               >
                 {isCurrentPage(Astro.url.pathname, href) && (
                   <span
