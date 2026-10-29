@@ -1,0 +1,60 @@
+---
+import { Moon, Sun } from '@lucide/astro';
+import IconButton from '../atoms/IconButton.astro';
+
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<IconButton
+  round
+  aria-label="Switch theme"
+  aria-pressed="false"
+  data-theme-toggle
+  class={className}
+>
+  <Moon size={20} aria-hidden="true" class="dark:hidden" />
+  <Sun size={20} aria-hidden="true" class="not-dark:hidden" />
+</IconButton>
+
+<script>
+  import { THEME_STORAGE_KEY } from '../../consts';
+
+  type Theme = 'light' | 'dark';
+
+  function getCurrentTheme(): Theme {
+    return document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light';
+  }
+
+  function syncThemeToggles() {
+    const isDark = getCurrentTheme() === 'dark';
+    document.querySelectorAll('[data-theme-toggle]').forEach((toggle) => {
+      toggle.setAttribute('aria-pressed', String(isDark));
+    });
+  }
+
+  function getThemeStorage(): Storage | null {
+    try {
+      return window.localStorage;
+    } catch {
+      return null;
+    }
+  }
+
+  function toggleTheme() {
+    const nextTheme: Theme = getCurrentTheme() === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = nextTheme;
+    getThemeStorage()?.setItem(THEME_STORAGE_KEY, nextTheme);
+    syncThemeToggles();
+  }
+
+  document.addEventListener('click', (event) => {
+    if (!(event.target instanceof Element)) return;
+    if (event.target.closest('[data-theme-toggle]')) toggleTheme();
+  });
+
+  document.addEventListener('astro:page-load', syncThemeToggles);
+</script>

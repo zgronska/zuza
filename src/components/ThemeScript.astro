@@ -1,6 +1,8 @@
-<script is:inline>
-  const THEME_STORAGE_KEY = 'theme';
+---
+import { THEME_STORAGE_KEY } from '../consts';
+---
 
+<script is:inline define:vars={{ THEME_STORAGE_KEY }}>
   function getThemeStorage() {
     try {
       return window.localStorage;

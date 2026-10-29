@@ -21,3 +21,5 @@ export const SOCIAL_LINKS: SiteLink[] = [
 export const CONTACT_EMAIL = 'zgronska@gmail.com';
 
 export const CV_HREF = '/cv.pdf';
+
+export const THEME_STORAGE_KEY = 'theme';
