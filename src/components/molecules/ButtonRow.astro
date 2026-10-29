@@ -1,0 +1,29 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+type Align = 'start' | 'center';
+
+interface Props extends HTMLAttributes<'div'> {
+  align?: Align;
+}
+
+const { align: alignProp, class: className, ...attrs } = Astro.props;
+
+const align: Align = alignProp ?? 'start';
+
+const alignClasses: Record<Align, string> = {
+  start: 'justify-start',
+  center: 'justify-center',
+};
+---
+
+<div
+  class:list={[
+    'flex flex-wrap gap-4 max-md:*:basis-full',
+    alignClasses[align],
+    className,
+  ]}
+  {...attrs}
+>
+  <slot />
+</div>
