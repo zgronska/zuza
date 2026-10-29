@@ -1,0 +1,30 @@
+---
+import { SITE_AUTHOR } from '../../consts';
+
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+
+const initials = SITE_AUTHOR.split(' ')
+  .map((namePart) => namePart.charAt(0))
+  .join('');
+---
+
+<a
+  href="/"
+  aria-label={`${SITE_AUTHOR}, home`}
+  class:list={[
+    'inline-flex min-h-11 items-center gap-2.5 rounded-full font-display text-lg font-extrabold tracking-tight text-foreground focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-accent-focus',
+    className,
+  ]}
+>
+  <span
+    class="inline-flex size-10 shrink-0 items-center justify-center rounded-full border-2 border-border bg-primary text-sm text-primary-foreground"
+    aria-hidden="true"
+  >
+    {initials}
+  </span>
+  <span>{SITE_AUTHOR}</span>
+</a>
