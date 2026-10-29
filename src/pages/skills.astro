@@ -1,0 +1,24 @@
+---
+import { getCollection } from 'astro:content';
+import Highlight from '../components/atoms/Highlight.astro';
+import PageHeading from '../components/molecules/PageHeading.astro';
+import SkillsBento from '../components/organisms/SkillsBento.astro';
+import Layout from '../layouts/Layout.astro';
+import { sortByOrder } from '../utils/sortByOrder';
+
+const skills = sortByOrder(await getCollection('skills'));
+const headingId = 'skills-title';
+---
+
+<Layout title="Skills">
+  <section aria-labelledby={headingId} class="site-container py-16 md:py-20">
+    <PageHeading
+      eyebrow="03 / Skills"
+      headingId={headingId}
+      lead="The languages, frameworks and tools I work with day to day."
+    >
+      Skills & <Highlight variant="accent">tools</Highlight>
+    </PageHeading>
+    <SkillsBento skills={skills} />
+  </section>
+</Layout>

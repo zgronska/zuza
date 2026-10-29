@@ -1,6 +1,7 @@
 [
   {
     "id": "languages",
+    "order": 1,
     "title": "Languages",
     "icon": "code",
     "tone": "primary",
@@ -9,6 +10,7 @@
   },
   {
     "id": "frameworks",
+    "order": 2,
     "title": "Frameworks",
     "icon": "layers",
     "tone": "accent",
@@ -26,6 +28,7 @@
   },
   {
     "id": "accessibility-performance",
+    "order": 3,
     "title": "Accessibility & performance",
     "icon": "accessibility",
     "tone": "highlight",
@@ -34,6 +37,7 @@
   },
   {
     "id": "tooling",
+    "order": 4,
     "title": "Tooling",
     "icon": "wrench",
     "tone": "primary",

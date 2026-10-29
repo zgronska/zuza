@@ -1,0 +1,14 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import SkillCard from './SkillCard.astro';
+
+interface Props {
+  skills: CollectionEntry<'skills'>[];
+}
+
+const { skills } = Astro.props;
+---
+
+<ul class="grid gap-5 md:grid-cols-12 md:gap-6">
+  {skills.map(({ data }, index) => <SkillCard skill={data} index={index} />)}
+</ul>

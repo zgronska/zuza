@@ -1,6 +1,7 @@
 [
   {
     "id": "domaine",
+    "order": 1,
     "company": "Domaine EMEA",
     "role": "Frontend Engineer II",
     "period": "2025 — Now",
@@ -18,6 +19,7 @@
   },
   {
     "id": "dutchdrops",
+    "order": 2,
     "company": "DutchDrops",
     "role": "Frontend Developer",
     "period": "2023 — 2025",
@@ -27,6 +29,7 @@
   },
   {
     "id": "marketing-pr",
+    "order": 3,
     "company": "Warner Music Group · Fource Entertainment · GOG · TicketSwap",
     "role": "Marketing, PR & Community",
     "period": "2018 — 2022",
