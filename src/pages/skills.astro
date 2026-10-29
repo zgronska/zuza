@@ -10,7 +10,10 @@ const skills = sortByOrder(await getCollection('skills'));
 const headingId = 'skills-title';
 ---
 
-<Layout title="Skills">
+<Layout
+  title="Skills"
+  description="The languages, frameworks and tools Zuza Gronska works with."
+>
   <section aria-labelledby={headingId} class="site-container py-16 md:py-20">
     <PageHeading
       eyebrow="03 / Skills"

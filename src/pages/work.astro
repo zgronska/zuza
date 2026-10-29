@@ -10,7 +10,10 @@ const jobs = sortByOrder(await getCollection('work'));
 const headingId = 'work-title';
 ---
 
-<Layout title="Work">
+<Layout
+  title="Work"
+  description="A timeline of Zuza Gronska's work experience."
+>
   <section aria-labelledby={headingId} class="site-container py-16 md:py-20">
     <PageHeading
       eyebrow="04 / Work"
