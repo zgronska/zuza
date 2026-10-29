@@ -3,16 +3,14 @@ import { SITE_AUTHOR } from '../../consts';
 import { toneClasses } from '../../utils/toneClasses';
 import Eyebrow from '../atoms/Eyebrow.astro';
 
-const currentYear = new Date().getFullYear();
+const copyright = `© ${new Date().getFullYear()} ${SITE_AUTHOR}. All rights reserved.`;
 ---
 
 <footer class:list={['border-t-3 border-border', toneClasses.highlight]}>
   <div
     class="site-container flex flex-wrap items-center justify-between gap-x-6 gap-y-2 py-6"
   >
-    <small class="text-sm"
-      >© {currentYear} {SITE_AUTHOR}. All rights reserved.</small
-    >
+    <small class="text-sm">{copyright}</small>
     <Eyebrow>Built with Astro + Tailwind</Eyebrow>
   </div>
 </footer>
