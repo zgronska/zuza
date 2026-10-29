@@ -1,0 +1,44 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+type Variant = 'surface' | 'accent' | 'highlight';
+
+interface Props extends HTMLAttributes<'span'> {
+  variant?: Variant;
+  status?: boolean;
+}
+
+const {
+  variant: variantProp,
+  status = false,
+  class: className,
+  ...attrs
+} = Astro.props;
+
+const variant: Variant = variantProp ?? 'surface';
+
+const variantClasses: Record<Variant, string> = {
+  surface: 'bg-surface text-foreground',
+  accent: 'bg-accent text-accent-foreground',
+  highlight: 'bg-highlight text-highlight-foreground',
+};
+---
+
+<span
+  class:list={[
+    'inline-flex -rotate-3 items-center gap-2 rounded-full border-3 border-border px-4 py-2 text-label shadow-md',
+    variantClasses[variant],
+    className,
+  ]}
+  {...attrs}
+>
+  {
+    status && (
+      <span
+        class="size-2.5 shrink-0 rounded-full border-2 border-border bg-primary"
+        aria-hidden="true"
+      />
+    )
+  }
+  <slot />
+</span>
