@@ -46,7 +46,9 @@ const pageTransition: TransitionAnimationPair = {
     <Font cssVariable="--font-space-mono" />
     <ClientRouter />
   </head>
-  <body class="flex min-h-dvh flex-col bg-dot-grid">
+  <body
+    class="flex min-h-dvh flex-col bg-dot-grid has-[dialog[open]]:overflow-hidden"
+  >
     <a
       href="#main"
       class="sr-only rounded-sm border-2 border-border bg-surface px-4 py-2 font-display font-bold shadow-sm focus-visible:not-sr-only focus-visible:fixed focus-visible:top-4 focus-visible:left-4 focus-visible:z-50 focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-accent-focus"

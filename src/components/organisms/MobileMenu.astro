@@ -1,0 +1,126 @@
+---
+import { NAV_LINKS, SOCIAL_LINKS } from '../../consts';
+import { isCurrentPage } from '../../utils/isCurrentPage';
+import Button from '../atoms/Button.astro';
+
+interface Props {
+  id: string;
+}
+
+const { id } = Astro.props;
+
+const socialVariants = ['ghost', 'accent'] as const;
+---
+
+<dialog
+  id={id}
+  aria-label="Menu"
+  data-mobile-menu
+  class="fixed inset-0 -z-10 m-0 size-full max-h-none max-w-none overflow-y-auto border-0 bg-background pt-24 pb-4 text-foreground max-lg:open:flex lg:hidden"
+>
+  <div class="site-container flex flex-1 flex-col gap-8">
+    <nav aria-label="Mobile">
+      <ul class="flex flex-col gap-3.5">
+        {
+          NAV_LINKS.map(({ label, href }, index) => (
+            <li>
+              <a
+                href={href}
+                aria-current={
+                  isCurrentPage(Astro.url.pathname, href) ? 'page' : undefined
+                }
+                class="flex items-center justify-between gap-4 rounded-lg border-3 border-border bg-surface px-5 py-3.5 font-display text-4xl font-extrabold tracking-tight shadow-md hover:-translate-0.5 hover:bg-background hover:shadow-lg focus-visible:-translate-0.5 focus-visible:shadow-lg focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-accent-focus active:translate-1 active:shadow-none aria-[current=page]:bg-accent aria-[current=page]:text-accent-foreground aria-[current=page]:hover:bg-accent-hover motion-safe:transition-[translate,box-shadow,background-color] motion-safe:duration-200 motion-safe:ease-out"
+              >
+                <span>{label}</span>
+                <span class="text-label" aria-hidden="true">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div class="mt-auto flex flex-wrap gap-3">
+      {
+        SOCIAL_LINKS.map(({ label, href }, index) => (
+          <Button
+            href={href}
+            external
+            variant={socialVariants[index % socialVariants.length]}
+            class="flex-1 basis-32"
+          >
+            {label}
+          </Button>
+        ))
+      }
+    </div>
+  </div>
+</dialog>
+
+<script>
+  const desktopQuery = matchMedia('(min-width: 64rem)');
+
+  function getToggleFor(menu: HTMLDialogElement) {
+    return document.querySelector<HTMLElement>(`[aria-controls="${menu.id}"]`);
+  }
+
+  function getMenuFor(toggle: Element) {
+    const menuId = toggle.getAttribute('aria-controls');
+    const menu = menuId ? document.getElementById(menuId) : null;
+
+    return menu instanceof HTMLDialogElement ? menu : null;
+  }
+
+  function getOpenMenus() {
+    return document.querySelectorAll<HTMLDialogElement>(
+      'dialog[data-mobile-menu][open]',
+    );
+  }
+
+  function setPageInert(menu: HTMLDialogElement, isInert: boolean) {
+    Array.from(document.body.children).forEach((element) => {
+      if (!element.contains(menu)) element.toggleAttribute('inert', isInert);
+    });
+  }
+
+  function openMenu(menu: HTMLDialogElement) {
+    menu.show();
+    getToggleFor(menu)?.setAttribute('aria-expanded', 'true');
+    setPageInert(menu, true);
+    menu.querySelector('a')?.focus();
+  }
+
+  function closeMenu(menu: HTMLDialogElement, { restoreFocus = true } = {}) {
+    const toggle = getToggleFor(menu);
+
+    menu.close();
+    toggle?.setAttribute('aria-expanded', 'false');
+    setPageInert(menu, false);
+    if (restoreFocus) toggle?.focus();
+  }
+
+  function closeOpenMenus() {
+    getOpenMenus().forEach((menu) => closeMenu(menu, { restoreFocus: false }));
+  }
+
+  document.addEventListener('click', (event) => {
+    if (!(event.target instanceof Element)) return;
+
+    const toggle = event.target.closest('[data-menu-toggle]');
+    const menu = toggle ? getMenuFor(toggle) : null;
+    if (!menu) return;
+
+    if (menu.open) closeMenu(menu);
+    else openMenu(menu);
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape')
+      getOpenMenus().forEach((menu) => closeMenu(menu));
+  });
+
+  desktopQuery.addEventListener('change', closeOpenMenus);
+  document.addEventListener('astro:before-preparation', closeOpenMenus);
+</script>

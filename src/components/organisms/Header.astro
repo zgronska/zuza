@@ -1,14 +1,13 @@
 ---
+import { Menu, X } from '@lucide/astro';
 import { NAV_LINKS, SOCIAL_LINKS } from '../../consts';
+import { isCurrentPage } from '../../utils/isCurrentPage';
 import IconButton from '../atoms/IconButton.astro';
 import ThemeToggle from '../molecules/ThemeToggle.astro';
 import Wordmark from '../molecules/Wordmark.astro';
+import MobileMenu from './MobileMenu.astro';
 
-const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
-
-function isCurrentPage(href: string) {
-  return href === '/' ? currentPath === '/' : currentPath.startsWith(href);
-}
+const mobileMenuId = 'mobile-menu';
 ---
 
 <header
@@ -28,10 +27,12 @@ function isCurrentPage(href: string) {
             <li>
               <a
                 href={href}
-                aria-current={isCurrentPage(href) ? 'page' : undefined}
+                aria-current={
+                  isCurrentPage(Astro.url.pathname, href) ? 'page' : undefined
+                }
                 class="relative isolate inline-flex min-h-11 items-center rounded-full border-2 border-transparent px-4.5 py-2 font-display font-bold hover:-translate-px hover:border-border hover:shadow-sm focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-accent-focus aria-[current=page]:text-accent-foreground motion-safe:transition-[translate,box-shadow] motion-safe:duration-200 motion-safe:ease-out"
               >
-                {isCurrentPage(href) && (
+                {isCurrentPage(Astro.url.pathname, href) && (
                   <span
                     class="absolute -inset-0.5 -z-10 rounded-full border-2 border-border bg-accent shadow-sm"
                     aria-hidden="true"
@@ -55,6 +56,22 @@ function isCurrentPage(href: string) {
         ))
       }
       <ThemeToggle />
+      <IconButton
+        round
+        aria-label="Menu"
+        aria-expanded="false"
+        aria-controls={mobileMenuId}
+        data-menu-toggle
+        class="group lg:hidden"
+      >
+        <Menu size={20} aria-hidden="true" class="group-aria-expanded:hidden" />
+        <X
+          size={20}
+          aria-hidden="true"
+          class="not-group-aria-expanded:hidden"
+        />
+      </IconButton>
     </div>
   </div>
+  <MobileMenu id={mobileMenuId} />
 </header>
