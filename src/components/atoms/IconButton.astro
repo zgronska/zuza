@@ -1,0 +1,38 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import { getActionAttrs } from '../../utils/getActionAttrs';
+import ExternalIndicator from './ExternalIndicator.astro';
+
+type BaseProps = Omit<HTMLAttributes<'a'>, 'type'> & {
+  external?: boolean;
+  type?: 'button' | 'submit' | 'reset';
+};
+
+type Props = BaseProps &
+  ({ round: true; 'aria-label': string } | { round?: false });
+
+const {
+  round = false,
+  external = false,
+  href,
+  type = 'button',
+  class: className,
+  ...attrs
+} = Astro.props;
+
+const Tag = href ? 'a' : 'button';
+const actionAttrs = getActionAttrs({ href, external, type });
+---
+
+<Tag
+  class:list={[
+    'inline-flex h-11 min-w-11 cursor-pointer items-center justify-center gap-1.5 rounded-full border-2 border-border bg-surface font-mono text-xs font-bold tracking-widest text-foreground uppercase shadow-sm hover:-translate-px hover:bg-background hover:shadow-md focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-accent-focus active:translate-0.5 active:shadow-none motion-safe:transition-[translate,box-shadow,background-color] motion-safe:duration-200 motion-safe:ease-out [&>svg]:shrink-0',
+    round ? 'w-11' : 'px-3.5',
+    className,
+  ]}
+  {...actionAttrs}
+  {...attrs}
+>
+  <slot />
+  {external && <ExternalIndicator size={16} />}
+</Tag>

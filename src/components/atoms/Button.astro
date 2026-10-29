@@ -1,6 +1,7 @@
 ---
-import { ArrowUpRight } from '@lucide/astro';
 import type { HTMLAttributes } from 'astro/types';
+import { getActionAttrs } from '../../utils/getActionAttrs';
+import ExternalIndicator from './ExternalIndicator.astro';
 
 type Variant = 'primary' | 'accent' | 'ghost';
 
@@ -31,9 +32,7 @@ const variantClasses: Record<Variant, string> = {
     'bg-surface text-foreground hover:bg-background active:bg-background focus-visible:outline-primary-focus',
 };
 
-const linkAttrs = href
-  ? { href, ...(external && { target: '_blank', rel: 'noopener' }) }
-  : { type };
+const actionAttrs = getActionAttrs({ href, external, type });
 ---
 
 <Tag
@@ -42,16 +41,9 @@ const linkAttrs = href
     variantClasses[variant],
     className,
   ]}
-  {...linkAttrs}
+  {...actionAttrs}
   {...attrs}
 >
   <slot />
-  {
-    external && (
-      <>
-        <ArrowUpRight size={20} aria-hidden="true" />
-        <span class="sr-only">(opens in new tab)</span>
-      </>
-    )
-  }
+  {external && <ExternalIndicator />}
 </Tag>

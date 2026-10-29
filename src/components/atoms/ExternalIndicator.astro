@@ -1,0 +1,12 @@
+---
+import { ArrowUpRight } from '@lucide/astro';
+
+interface Props {
+  size?: number;
+}
+
+const { size = 20 } = Astro.props;
+---
+
+<ArrowUpRight size={size} aria-hidden="true" />
+<span class="sr-only">(opens in new tab)</span>
