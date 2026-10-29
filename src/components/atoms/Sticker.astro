@@ -1,39 +1,19 @@
 ---
 import type { HTMLAttributes } from 'astro/types';
-import { toneClasses, type Tone } from '../../utils/toneClasses';
+import { toneClasses } from '../../utils/toneClasses';
 
-type Variant = Extract<Tone, 'surface' | 'accent' | 'highlight'>;
+type Props = HTMLAttributes<'span'>;
 
-interface Props extends HTMLAttributes<'span'> {
-  variant?: Variant;
-  status?: boolean;
-}
-
-const {
-  variant: variantProp,
-  status = false,
-  class: className,
-  ...attrs
-} = Astro.props;
-
-const variant: Variant = variantProp ?? 'surface';
+const { class: className, ...attrs } = Astro.props;
 ---
 
 <span
   class:list={[
     'inline-flex -rotate-3 items-center gap-2 rounded-full border-3 border-border px-4 py-2 text-label shadow-md',
-    toneClasses[variant],
+    toneClasses.accent,
     className,
   ]}
   {...attrs}
 >
-  {
-    status && (
-      <span
-        class="size-2.5 shrink-0 rounded-full border-2 border-border bg-primary"
-        aria-hidden="true"
-      />
-    )
-  }
   <slot />
 </span>

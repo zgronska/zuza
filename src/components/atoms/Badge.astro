@@ -2,7 +2,7 @@
 import type { HTMLAttributes } from 'astro/types';
 import { toneClasses, type Tone } from '../../utils/toneClasses';
 
-type Variant = Extract<Tone, 'surface' | 'primary' | 'accent'>;
+type Variant = Extract<Tone, 'surface' | 'accent'>;
 type Size = 'md' | 'lg';
 
 interface Props extends HTMLAttributes<'span'> {

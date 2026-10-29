@@ -1,8 +1,8 @@
 ---
 import type { Polymorphic } from 'astro/types';
 
-type HeadingTag = 'h1' | 'h2' | 'h3' | 'h4' | 'p';
-type Size = 'hero' | 'display' | 'section' | 'title';
+type HeadingTag = 'h1' | 'h2' | 'p';
+type Size = 'hero' | 'display' | 'title';
 
 type Props<Tag extends HeadingTag> = Polymorphic<{ as: Tag }> & {
   size: Size;
@@ -20,7 +20,6 @@ const size: Size = sizeProp;
 const sizeClasses: Record<Size, string> = {
   hero: 'text-5xl font-extrabold leading-none tracking-tighter md:text-hero',
   display: 'text-display font-extrabold leading-none tracking-tighter',
-  section: 'text-4xl font-extrabold tracking-tight',
   title: 'text-2xl font-bold tracking-tight',
 };
 ---

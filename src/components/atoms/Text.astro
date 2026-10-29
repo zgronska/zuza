@@ -1,16 +1,14 @@
 ---
-import type { Polymorphic } from 'astro/types';
+import type { HTMLAttributes } from 'astro/types';
 
-type TextTag = 'p' | 'span' | 'div';
 type Size = 'lead' | 'body';
 
-type Props<Tag extends TextTag> = Polymorphic<{ as: Tag }> & {
+interface Props extends HTMLAttributes<'p'> {
   size?: Size;
   muted?: boolean;
-};
+}
 
 const {
-  as: Tag = 'p',
   size: sizeProp,
   muted = false,
   class: className,
@@ -25,7 +23,7 @@ const sizeClasses: Record<Size, string> = {
 };
 ---
 
-<Tag
+<p
   class:list={[
     'max-w-prose text-pretty',
     sizeClasses[size],
@@ -35,4 +33,4 @@ const sizeClasses: Record<Size, string> = {
   {...attrs}
 >
   <slot />
-</Tag>
+</p>
