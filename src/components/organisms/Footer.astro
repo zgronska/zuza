@@ -1,5 +1,6 @@
 ---
-import { SITE_AUTHOR } from '../consts';
+import { SITE_AUTHOR } from '../../consts';
+import Eyebrow from '../atoms/Eyebrow.astro';
 
 const currentYear = new Date().getFullYear();
 ---
@@ -11,8 +12,6 @@ const currentYear = new Date().getFullYear();
     <small class="text-sm"
       >© {currentYear} {SITE_AUTHOR}. All rights reserved.</small
     >
-    <p class="font-mono text-xs font-bold tracking-widest uppercase">
-      Built with Astro + Tailwind
-    </p>
+    <Eyebrow>Built with Astro + Tailwind</Eyebrow>
   </div>
 </footer>

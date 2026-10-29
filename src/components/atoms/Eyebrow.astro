@@ -1,0 +1,34 @@
+---
+import type { HTMLTag, Polymorphic } from 'astro/types';
+
+type Variant = 'plain' | 'chip';
+
+type Props<Tag extends HTMLTag> = Polymorphic<{ as: Tag }> & {
+  variant?: Variant;
+};
+
+const {
+  as: Tag = 'p',
+  variant: variantProp,
+  class: className,
+  ...attrs
+} = Astro.props;
+
+const variant: Variant = variantProp ?? 'plain';
+
+const variantClasses: Record<Variant, string> = {
+  plain: '',
+  chip: 'inline-flex self-start -rotate-2 border-2 border-border bg-highlight px-3 py-1.5 text-highlight-foreground shadow-sm',
+};
+---
+
+<Tag
+  class:list={[
+    'font-mono text-xs font-bold tracking-widest uppercase',
+    variantClasses[variant],
+    className,
+  ]}
+  {...attrs}
+>
+  <slot />
+</Tag>
