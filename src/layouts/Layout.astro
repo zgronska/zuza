@@ -2,7 +2,9 @@
 import type { TransitionAnimationPair } from 'astro';
 import { Font } from 'astro:assets';
 import { ClientRouter } from 'astro:transitions';
+import Footer from '../components/Footer.astro';
 import ThemeScript from '../components/ThemeScript.astro';
+import { SITE_AUTHOR } from '../consts';
 import '../styles/global.css';
 
 interface Props {
@@ -35,7 +37,7 @@ const pageTransition: TransitionAnimationPair = {
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
-    <title>{`${title} — Zuza Gronska`}</title>
+    <title>{`${title} — ${SITE_AUTHOR}`}</title>
     {description && <meta name="description" content={description} />}
     <ThemeScript />
     <Font cssVariable="--font-bricolage-grotesque" preload />
@@ -60,5 +62,6 @@ const pageTransition: TransitionAnimationPair = {
     >
       <slot />
     </main>
+    <Footer />
   </body>
 </html>
