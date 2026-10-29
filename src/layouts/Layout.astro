@@ -8,12 +8,22 @@ import ThemeScript from '../components/ThemeScript.astro';
 import { SITE_AUTHOR } from '../consts';
 import '../styles/global.css';
 
+type Background = 'dots' | 'stripes';
+
 interface Props {
   title: string;
   description?: string;
+  background?: Background;
 }
 
-const { title, description } = Astro.props;
+const { title, description, background: backgroundProp } = Astro.props;
+
+const background: Background = backgroundProp ?? 'dots';
+
+const backgroundClasses: Record<Background, string> = {
+  dots: 'bg-dot-grid',
+  stripes: 'bg-stripes',
+};
 
 const pageTransition: TransitionAnimationPair = {
   old: {
@@ -47,7 +57,10 @@ const pageTransition: TransitionAnimationPair = {
     <ClientRouter />
   </head>
   <body
-    class="flex min-h-dvh flex-col bg-dot-grid has-[dialog[open]]:overflow-hidden"
+    class:list={[
+      'flex min-h-dvh flex-col has-[dialog[open]]:overflow-hidden',
+      backgroundClasses[background],
+    ]}
   >
     <a
       href="#main"

@@ -1,0 +1,50 @@
+---
+import { Download, Mail } from '@lucide/astro';
+import { CONTACT_EMAIL, CV_HREF, SOCIAL_LINKS } from '../../consts';
+import Button from '../atoms/Button.astro';
+import Eyebrow from '../atoms/Eyebrow.astro';
+import Heading from '../atoms/Heading.astro';
+import Highlight from '../atoms/Highlight.astro';
+import Text from '../atoms/Text.astro';
+import ButtonRow from '../molecules/ButtonRow.astro';
+import Card from '../molecules/Card.astro';
+
+const headingId = 'contact-title';
+const mailtoHref = `mailto:${CONTACT_EMAIL}`;
+const linkedInLink = SOCIAL_LINKS.find(({ label }) => label === 'LinkedIn');
+---
+
+<section aria-labelledby={headingId} class="py-16 md:py-20">
+  <div class="site-container">
+    <Card
+      hoverable={false}
+      elevated
+      class="flex flex-col items-center gap-8 px-5 py-12 text-center md:px-8 md:py-20"
+    >
+      <Eyebrow variant="chip">05 / Contact</Eyebrow>
+      <Heading as="h1" size="display" id={headingId} class="max-w-4xl">
+        Let's build something <Highlight>bold</Highlight>
+      </Heading>
+      <Text size="lead" muted>
+        Have a project in mind or just want to say hi? My inbox is open.
+      </Text>
+      <ButtonRow align="center" class="self-stretch md:self-center">
+        <Button href={mailtoHref}>
+          <Mail size={20} aria-hidden="true" />
+          Email me
+        </Button>
+        {
+          linkedInLink && (
+            <Button href={linkedInLink.href} external variant="accent">
+              Connect on LinkedIn
+            </Button>
+          )
+        }
+        <Button href={CV_HREF} download variant="ghost">
+          <Download size={20} aria-hidden="true" />
+          Download CV
+        </Button>
+      </ButtonRow>
+    </Card>
+  </div>
+</section>

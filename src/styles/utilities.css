@@ -21,3 +21,11 @@
   );
   background-size: 22px 22px;
 }
+
+@utility bg-stripes {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    var(--color-accent) 0 16px,
+    var(--color-background) 16px 32px
+  );
+}
