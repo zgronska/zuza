@@ -11,7 +11,6 @@ import Card from '../molecules/Card.astro';
 
 const headingId = 'contact-title';
 const mailtoHref = `mailto:${CONTACT_EMAIL}`;
-const linkedInLink = SOCIAL_LINKS.find(({ label }) => label === 'LinkedIn');
 ---
 
 <section aria-labelledby={headingId} class="py-16 md:py-20">
@@ -33,13 +32,9 @@ const linkedInLink = SOCIAL_LINKS.find(({ label }) => label === 'LinkedIn');
           <Mail size={20} aria-hidden="true" />
           Email me
         </Button>
-        {
-          linkedInLink && (
-            <Button href={linkedInLink.href} external variant="accent">
-              Connect on LinkedIn
-            </Button>
-          )
-        }
+        <Button href={SOCIAL_LINKS.linkedin.href} external variant="accent">
+          Connect on LinkedIn
+        </Button>
         <Button href={CV_HREF} download variant="ghost">
           <Download size={20} aria-hidden="true" />
           Download CV

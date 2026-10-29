@@ -60,7 +60,7 @@ function getNavLabelTransitionName(href: string) {
 
     <div class="flex items-center gap-2">
       {
-        SOCIAL_LINKS.map(({ label, href }) => (
+        Object.values(SOCIAL_LINKS).map(({ label, href }) => (
           <IconButton href={href} external class="max-lg:hidden">
             {label}
           </IconButton>

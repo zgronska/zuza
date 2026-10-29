@@ -13,10 +13,15 @@ export const NAV_LINKS: SiteLink[] = [
   { label: 'Contact', href: '/contact' },
 ];
 
-export const SOCIAL_LINKS: SiteLink[] = [
-  { label: 'GitHub', href: 'https://github.com/zgronska' },
-  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/zuza-gronska/' },
-];
+export const SOCIAL_LINKS = {
+  github: { label: 'GitHub', href: 'https://github.com/zgronska' },
+  linkedin: {
+    label: 'LinkedIn',
+    href: 'https://www.linkedin.com/in/zuza-gronska/',
+  },
+} satisfies Record<string, SiteLink>;
+
+export type SocialLinkKey = keyof typeof SOCIAL_LINKS;
 
 export const CONTACT_EMAIL = 'zgronska@gmail.com';
 

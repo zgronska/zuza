@@ -1,5 +1,5 @@
 ---
-import { NAV_LINKS, SOCIAL_LINKS } from '../../consts';
+import { NAV_LINKS, SOCIAL_LINKS, type SocialLinkKey } from '../../consts';
 import { isCurrentPage } from '../../utils/isCurrentPage';
 import Button from '../atoms/Button.astro';
 
@@ -9,7 +9,15 @@ interface Props {
 
 const { id } = Astro.props;
 
-const socialVariants = ['ghost', 'accent'] as const;
+const socialVariants: Record<SocialLinkKey, 'ghost' | 'accent'> = {
+  github: 'ghost',
+  linkedin: 'accent',
+};
+
+const socialLinkEntries = Object.entries(SOCIAL_LINKS) as [
+  SocialLinkKey,
+  (typeof SOCIAL_LINKS)[SocialLinkKey],
+][];
 ---
 
 <dialog
@@ -44,11 +52,11 @@ const socialVariants = ['ghost', 'accent'] as const;
 
     <div class="mt-auto flex flex-wrap gap-3">
       {
-        SOCIAL_LINKS.map(({ label, href }, index) => (
+        socialLinkEntries.map(([key, { label, href }]) => (
           <Button
             href={href}
             external
-            variant={socialVariants[index % socialVariants.length]}
+            variant={socialVariants[key]}
             class="flex-1 basis-32"
           >
             {label}
