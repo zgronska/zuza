@@ -1,0 +1,16 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import TimelineItem from './TimelineItem.astro';
+
+interface Props {
+  jobs: CollectionEntry<'work'>[];
+}
+
+const { jobs } = Astro.props;
+---
+
+<ol
+  class="relative flex flex-col gap-12 before:absolute before:inset-y-0 before:left-3 before:w-0.75 before:-translate-x-1/2 before:bg-border lg:before:left-1/2"
+>
+  {jobs.map(({ data }, index) => <TimelineItem job={data} index={index} />)}
+</ol>

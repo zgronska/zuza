@@ -1,0 +1,61 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Badge from '../atoms/Badge.astro';
+import Eyebrow from '../atoms/Eyebrow.astro';
+import Heading from '../atoms/Heading.astro';
+import Text from '../atoms/Text.astro';
+import BadgeList from '../molecules/BadgeList.astro';
+import Card from '../molecules/Card.astro';
+
+type Job = CollectionEntry<'work'>['data'];
+
+interface Props {
+  job: Job;
+  index: number;
+}
+
+const { job, index } = Astro.props;
+
+const dotClasses: Record<Job['tone'], string> = {
+  primary: 'bg-primary',
+  accent: 'bg-accent',
+  highlight: 'bg-highlight',
+};
+
+const isRightSide = index % 2 === 1;
+const periodVariant = job.current ? 'accent' : 'surface';
+---
+
+<li
+  class="grid stagger grid-cols-[1.5rem_minmax(0,1fr)] items-start gap-x-5 lg:grid-cols-[minmax(0,1fr)_10rem_minmax(0,1fr)] lg:gap-x-0"
+  style={`--stagger-index: ${index}`}
+>
+  <div
+    class="relative z-1 col-start-1 row-start-1 flex flex-col items-center gap-3 pt-6 lg:col-start-2"
+  >
+    <span
+      class:list={[
+        'size-6 border-3 border-border shadow-sm',
+        dotClasses[job.tone],
+      ]}
+      aria-hidden="true"></span>
+    <Badge variant={periodVariant} class="max-lg:hidden">{job.period}</Badge>
+  </div>
+
+  <Card
+    as="article"
+    tone={job.tone}
+    class:list={[
+      'col-start-2 row-start-1 flex flex-col gap-4 md:p-8',
+      isRightSide ? 'lg:col-start-3' : 'lg:col-start-1',
+    ]}
+  >
+    <Badge variant={periodVariant} class="self-start lg:hidden">
+      {job.period}
+    </Badge>
+    <Eyebrow>{job.company}</Eyebrow>
+    <Heading as="h2" size="title">{job.role}</Heading>
+    <Text>{job.summary}</Text>
+    <BadgeList items={job.tags} />
+  </Card>
+</li>

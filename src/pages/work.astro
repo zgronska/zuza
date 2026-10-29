@@ -1,0 +1,24 @@
+---
+import { getCollection } from 'astro:content';
+import Highlight from '../components/atoms/Highlight.astro';
+import PageHeading from '../components/molecules/PageHeading.astro';
+import Timeline from '../components/organisms/Timeline.astro';
+import Layout from '../layouts/Layout.astro';
+import { sortByOrder } from '../utils/sortByOrder';
+
+const jobs = sortByOrder(await getCollection('work'));
+const headingId = 'work-title';
+---
+
+<Layout title="Work">
+  <section aria-labelledby={headingId} class="site-container py-16 md:py-20">
+    <PageHeading
+      eyebrow="04 / Work"
+      headingId={headingId}
+      lead="Making cool things for the web."
+    >
+      Where I've <Highlight variant="accent">worked</Highlight>
+    </PageHeading>
+    <Timeline jobs={jobs} />
+  </section>
+</Layout>
