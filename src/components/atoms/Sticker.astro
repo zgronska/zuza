@@ -1,7 +1,8 @@
 ---
 import type { HTMLAttributes } from 'astro/types';
+import { toneClasses, type Tone } from '../../utils/toneClasses';
 
-type Variant = 'surface' | 'accent' | 'highlight';
+type Variant = Extract<Tone, 'surface' | 'accent' | 'highlight'>;
 
 interface Props extends HTMLAttributes<'span'> {
   variant?: Variant;
@@ -16,18 +17,12 @@ const {
 } = Astro.props;
 
 const variant: Variant = variantProp ?? 'surface';
-
-const variantClasses: Record<Variant, string> = {
-  surface: 'bg-surface text-foreground',
-  accent: 'bg-accent text-accent-foreground',
-  highlight: 'bg-highlight text-highlight-foreground',
-};
 ---
 
 <span
   class:list={[
     'inline-flex -rotate-3 items-center gap-2 rounded-full border-3 border-border px-4 py-2 text-label shadow-md',
-    variantClasses[variant],
+    toneClasses[variant],
     className,
   ]}
   {...attrs}

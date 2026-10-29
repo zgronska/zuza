@@ -1,20 +1,16 @@
 ---
 import type { HTMLAttributes } from 'astro/types';
+import { toneClasses, type Tone } from '../../utils/toneClasses';
 
-type Tone = 'surface' | 'highlight';
+type IconTileTone = Extract<Tone, 'surface' | 'highlight'>;
 
 interface Props extends HTMLAttributes<'span'> {
-  tone?: Tone;
+  tone?: IconTileTone;
 }
 
 const { tone: toneProp, class: className, ...attrs } = Astro.props;
 
-const tone: Tone = toneProp ?? 'highlight';
-
-const toneClasses: Record<Tone, string> = {
-  surface: 'bg-surface text-foreground',
-  highlight: 'bg-highlight text-highlight-foreground',
-};
+const tone: IconTileTone = toneProp ?? 'highlight';
 ---
 
 <span

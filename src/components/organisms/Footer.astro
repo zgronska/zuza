@@ -1,11 +1,12 @@
 ---
 import { SITE_AUTHOR } from '../../consts';
+import { toneClasses } from '../../utils/toneClasses';
 import Eyebrow from '../atoms/Eyebrow.astro';
 
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="border-t-3 border-border bg-highlight text-highlight-foreground">
+<footer class:list={['border-t-3 border-border', toneClasses.highlight]}>
   <div
     class="site-container flex flex-wrap items-center justify-between gap-x-6 gap-y-2 py-6"
   >

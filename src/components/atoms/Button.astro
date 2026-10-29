@@ -1,6 +1,7 @@
 ---
 import type { HTMLAttributes } from 'astro/types';
 import { getActionAttrs } from '../../utils/getActionAttrs';
+import { toneClasses } from '../../utils/toneClasses';
 import ExternalIndicator from './ExternalIndicator.astro';
 
 type Variant = 'primary' | 'accent' | 'ghost';
@@ -24,12 +25,9 @@ const variant: Variant = variantProp ?? 'primary';
 const Tag = href ? 'a' : 'button';
 
 const variantClasses: Record<Variant, string> = {
-  primary:
-    'bg-primary text-primary-foreground hover:bg-primary-hover active:bg-primary-active focus-visible:outline-primary-focus',
-  accent:
-    'bg-accent text-accent-foreground hover:bg-accent-hover active:bg-accent-active',
-  ghost:
-    'bg-surface text-foreground hover:bg-background active:bg-background focus-visible:outline-primary-focus',
+  primary: `${toneClasses.primary} hover:bg-primary-hover active:bg-primary-active focus-visible:outline-primary-focus`,
+  accent: `${toneClasses.accent} hover:bg-accent-hover active:bg-accent-active`,
+  ghost: `${toneClasses.surface} hover:bg-background active:bg-background focus-visible:outline-primary-focus`,
 };
 
 const actionAttrs = getActionAttrs({ href, external, type });

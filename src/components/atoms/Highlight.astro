@@ -1,7 +1,8 @@
 ---
 import type { HTMLAttributes } from 'astro/types';
+import { toneClasses, type Tone } from '../../utils/toneClasses';
 
-type Variant = 'primary' | 'accent';
+type Variant = Extract<Tone, 'primary' | 'accent'>;
 
 interface Props extends HTMLAttributes<'span'> {
   variant?: Variant;
@@ -10,17 +11,12 @@ interface Props extends HTMLAttributes<'span'> {
 const { variant: variantProp, class: className, ...attrs } = Astro.props;
 
 const variant: Variant = variantProp ?? 'primary';
-
-const variantClasses: Record<Variant, string> = {
-  primary: 'bg-primary text-primary-foreground',
-  accent: 'bg-accent text-accent-foreground',
-};
 ---
 
 <span
   class:list={[
     'inline-block rounded-sm border-3 border-border px-[0.15em] shadow-sm',
-    variantClasses[variant],
+    toneClasses[variant],
     className,
   ]}
   {...attrs}
