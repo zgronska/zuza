@@ -1,0 +1,33 @@
+---
+interface Props {
+  items: string[];
+}
+
+const { items } = Astro.props;
+
+const loopCopies = 2;
+const separatorClasses = ['text-highlight', 'text-primary'];
+---
+
+<div class="relative z-2 pt-4 pb-12 md:pt-6 md:pb-20" aria-hidden="true">
+  <div
+    class="-mx-8 -rotate-2 border-y-3 border-border bg-foreground text-background"
+  >
+    <div class="flex w-max motion-safe:animate-marquee">
+      {
+        Array.from({ length: loopCopies }, () => (
+          <div class="flex shrink-0 items-center gap-8 py-5 pe-8 font-display text-2xl leading-none font-extrabold tracking-tight uppercase md:text-3xl">
+            {items.map((item, index) => (
+              <>
+                <span>{item}</span>
+                <span class={separatorClasses[index % separatorClasses.length]}>
+                  ✦
+                </span>
+              </>
+            ))}
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</div>
