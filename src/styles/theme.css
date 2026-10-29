@@ -54,6 +54,8 @@
   --font-display: var(--font-bricolage-grotesque);
   --font-serif: var(--font-newsreader);
   --font-mono: var(--font-space-mono);
+  --default-font-family: var(--font-newsreader);
+  --default-mono-font-family: var(--font-space-mono);
 }
 
 @layer base {

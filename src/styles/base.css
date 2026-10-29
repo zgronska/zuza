@@ -1,0 +1,13 @@
+@layer base {
+  :root {
+    @apply scheme-light;
+  }
+
+  [data-theme='dark'] {
+    @apply scheme-dark;
+  }
+
+  body {
+    @apply bg-background font-serif text-base leading-normal text-foreground;
+  }
+}

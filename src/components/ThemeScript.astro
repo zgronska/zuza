@@ -1,0 +1,30 @@
+<script is:inline>
+  const THEME_STORAGE_KEY = 'theme';
+
+  function getThemeStorage() {
+    try {
+      return window.localStorage;
+    } catch {
+      return null;
+    }
+  }
+
+  function resolveTheme(storage) {
+    const storedTheme = storage?.getItem(THEME_STORAGE_KEY);
+    if (storedTheme === 'light' || storedTheme === 'dark') return storedTheme;
+
+    return matchMedia('(prefers-color-scheme: dark)').matches
+      ? 'dark'
+      : 'light';
+  }
+
+  function applyTheme() {
+    const storage = getThemeStorage();
+    const theme = resolveTheme(storage);
+    document.documentElement.dataset.theme = theme;
+    storage?.setItem(THEME_STORAGE_KEY, theme);
+  }
+
+  applyTheme();
+  document.addEventListener('astro:after-swap', applyTheme);
+</script>
