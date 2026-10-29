@@ -2,6 +2,13 @@
   @apply mx-auto w-full max-w-7xl px-4 md:px-6;
 }
 
+@utility stagger {
+  @variant motion-safe {
+    animation: var(--animate-fade-up);
+    animation-delay: calc(var(--stagger-index, 0) * 80ms);
+  }
+}
+
 @utility bg-dot-grid {
   background-image: radial-gradient(
     circle,
