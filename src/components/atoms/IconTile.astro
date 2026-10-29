@@ -1,0 +1,30 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+type Tone = 'surface' | 'highlight';
+
+interface Props extends HTMLAttributes<'span'> {
+  tone?: Tone;
+}
+
+const { tone: toneProp, class: className, ...attrs } = Astro.props;
+
+const tone: Tone = toneProp ?? 'highlight';
+
+const toneClasses: Record<Tone, string> = {
+  surface: 'bg-surface text-foreground',
+  highlight: 'bg-highlight text-highlight-foreground',
+};
+---
+
+<span
+  class:list={[
+    'inline-flex size-11 shrink-0 items-center justify-center rounded-sm border-2 border-border shadow-sm',
+    toneClasses[tone],
+    className,
+  ]}
+  aria-hidden="true"
+  {...attrs}
+>
+  <slot />
+</span>
