@@ -1,0 +1,28 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import Eyebrow from '../atoms/Eyebrow.astro';
+import Heading from '../atoms/Heading.astro';
+import Text from '../atoms/Text.astro';
+
+interface Props extends HTMLAttributes<'div'> {
+  eyebrow: string;
+  headingId: string;
+  lead?: string;
+}
+
+const { eyebrow, headingId, lead, class: className, ...attrs } = Astro.props;
+---
+
+<div class:list={['mb-10 flex flex-col gap-5 md:mb-16', className]} {...attrs}>
+  <Eyebrow variant="chip">{eyebrow}</Eyebrow>
+  <Heading as="h1" size="hero" id={headingId}>
+    <slot />
+  </Heading>
+  {
+    lead && (
+      <Text size="lead" muted>
+        {lead}
+      </Text>
+    )
+  }
+</div>
