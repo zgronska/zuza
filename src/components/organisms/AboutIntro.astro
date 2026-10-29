@@ -1,0 +1,49 @@
+---
+import Highlight from '../atoms/Highlight.astro';
+import Sticker from '../atoms/Sticker.astro';
+import Text from '../atoms/Text.astro';
+import Card from '../molecules/Card.astro';
+import MediaFrame from '../molecules/MediaFrame.astro';
+import PageHeading from '../molecules/PageHeading.astro';
+
+const headingId = 'about-title';
+---
+
+<section aria-labelledby={headingId} class="site-container py-16 md:py-20">
+  <PageHeading eyebrow="02 / About" headingId={headingId}>
+    About <Highlight variant="accent">me</Highlight>
+  </PageHeading>
+
+  <div class="grid items-center gap-10 md:grid-cols-12 md:gap-12">
+    <MediaFrame
+      variant="photo"
+      label="Portrait · 4:5"
+      class="w-full max-w-80 justify-self-center md:col-span-5 md:max-w-none"
+    >
+      <Sticker slot="sticker" variant="accent">That's me</Sticker>
+    </MediaFrame>
+
+    <Card
+      hoverable={false}
+      class="flex flex-col gap-8 md:col-span-6 md:col-start-7 md:p-8"
+    >
+      <Text size="lead">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat.
+      </Text>
+      <blockquote
+        class="-rotate-1 rounded-lg border-3 border-border bg-highlight px-7 py-6 text-2xl leading-snug text-highlight-foreground italic shadow-md"
+      >
+        “Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor.”
+      </blockquote>
+      <Text size="lead">
+        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+        officia deserunt mollit anim id est laborum. Curabitur pretium tincidunt
+        lacus, nulla gravida orci a odio.
+      </Text>
+    </Card>
+  </div>
+</section>

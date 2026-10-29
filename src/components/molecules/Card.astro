@@ -6,16 +6,19 @@ type Tone = 'surface' | 'primary' | 'accent' | 'highlight';
 
 type Props<Tag extends CardTag> = Polymorphic<{ as: Tag }> & {
   tone?: Tone;
+  hoverable?: boolean;
 };
 
 const {
   as: Tag = 'div',
   tone: toneProp,
+  hoverable: hoverableProp,
   class: className,
   ...attrs
 } = Astro.props;
 
 const tone: Tone = toneProp ?? 'surface';
+const hoverable: boolean = hoverableProp ?? true;
 
 const toneClasses: Record<Tone, string> = {
   surface: 'bg-surface text-foreground',
@@ -27,7 +30,11 @@ const toneClasses: Record<Tone, string> = {
 
 <Tag
   class:list={[
-    'rounded-lg border-3 border-border p-6 shadow-md hover:-translate-0.5 hover:shadow-lg motion-safe:transition-[translate,box-shadow] motion-safe:duration-200 motion-safe:ease-out',
+    'rounded-lg border-3 border-border p-6 shadow-md',
+    {
+      'hover:-translate-0.5 hover:shadow-lg motion-safe:transition-[translate,box-shadow] motion-safe:duration-200 motion-safe:ease-out':
+        hoverable,
+    },
     toneClasses[tone],
     className,
   ]}
