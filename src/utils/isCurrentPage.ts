@@ -1,5 +1,7 @@
 export function isCurrentPage(pathname: string, href: string) {
   const currentPath = pathname.replace(/\/$/, '') || '/';
 
-  return href === '/' ? currentPath === '/' : currentPath.startsWith(href);
+  if (href === '/') return currentPath === '/';
+
+  return currentPath === href || currentPath.startsWith(`${href}/`);
 }
