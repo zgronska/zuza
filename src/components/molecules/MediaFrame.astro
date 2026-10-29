@@ -1,0 +1,80 @@
+---
+import { Image as ImageIcon } from '@lucide/astro';
+import type { HTMLAttributes } from 'astro/types';
+import Badge from '../atoms/Badge.astro';
+import Eyebrow from '../atoms/Eyebrow.astro';
+
+type Variant = 'illustration' | 'photo';
+
+interface Props extends HTMLAttributes<'div'> {
+  variant: Variant;
+  label: string;
+}
+
+const { variant: variantProp, label, class: className, ...attrs } = Astro.props;
+
+const variant: Variant = variantProp;
+
+const variantClasses: Record<Variant, string> = {
+  illustration: 'bg-accent shadow-xl',
+  photo:
+    'flex flex-col items-center justify-center gap-4 bg-surface text-muted-foreground shadow-lg',
+};
+
+const shapeClasses = 'absolute border-3 border-border';
+---
+
+<div class:list={['relative', className]} {...attrs}>
+  <div
+    role="img"
+    aria-label={label}
+    class:list={[
+      'relative aspect-4/5 overflow-hidden rounded-lg border-3 border-border',
+      variantClasses[variant],
+    ]}
+  >
+    {
+      variant === 'illustration' ? (
+        <>
+          <span
+            class:list={[
+              shapeClasses,
+              'top-1/8 left-1/10 aspect-square w-1/2 rounded-full bg-primary',
+            ]}
+          />
+          <span
+            class:list={[
+              shapeClasses,
+              'top-1/6 right-1/7 aspect-square w-1/6 bg-highlight',
+            ]}
+          />
+          <span
+            class:list={[
+              shapeClasses,
+              'right-1/10 bottom-1/5 h-3/10 w-1/2 rotate-6 rounded-lg bg-surface shadow-md',
+            ]}
+          />
+          <span
+            class:list={[
+              shapeClasses,
+              'bottom-1/7 left-1/7 h-1/20 w-2/5 rounded-full bg-foreground',
+            ]}
+          />
+          <Badge class="absolute bottom-4 left-4">{label}</Badge>
+        </>
+      ) : (
+        <>
+          <ImageIcon size={48} aria-hidden="true" />
+          <Eyebrow as="span">{label}</Eyebrow>
+        </>
+      )
+    }
+  </div>
+  {
+    Astro.slots.has('sticker') && (
+      <div class="absolute -top-5 -right-2 md:-right-4">
+        <slot name="sticker" />
+      </div>
+    )
+  }
+</div>
