@@ -8,8 +8,10 @@
 
 @utility stagger {
   @variant motion-safe {
-    animation: var(--animate-fade-up);
-    animation-delay: calc(var(--stagger-index, 0) * 80ms);
+    &:not(:where([data-client-navigated] *)) {
+      animation: var(--animate-fade-up);
+      animation-delay: calc(var(--stagger-index, 0) * 80ms);
+    }
   }
 }
 

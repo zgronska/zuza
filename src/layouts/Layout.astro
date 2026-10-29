@@ -82,3 +82,9 @@ const pageTransition: TransitionAnimationPair = {
     <Footer />
   </body>
 </html>
+
+<script>
+  document.addEventListener('astro:after-swap', () => {
+    document.documentElement.dataset.clientNavigated = '';
+  });
+</script>
