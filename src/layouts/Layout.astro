@@ -2,6 +2,7 @@
 import type { TransitionAnimationPair } from 'astro';
 import { Font } from 'astro:assets';
 import { ClientRouter } from 'astro:transitions';
+import Analytics from '@vercel/analytics/astro';
 import Footer from '../components/organisms/Footer.astro';
 import Header from '../components/organisms/Header.astro';
 import ThemeScript from '../components/ThemeScript.astro';
@@ -55,6 +56,7 @@ const pageTransition: TransitionAnimationPair = {
     <Font cssVariable="--font-newsreader" preload={[{ style: 'normal' }]} />
     <Font cssVariable="--font-space-mono" />
     <ClientRouter />
+    <Analytics />
   </head>
   <body
     class:list={[
