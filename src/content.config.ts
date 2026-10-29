@@ -15,4 +15,17 @@ const skills = defineCollection({
   }),
 });
 
-export const collections = { skills };
+const work = defineCollection({
+  loader: file('src/content/work.json'),
+  schema: z.object({
+    company: z.string(),
+    role: z.string(),
+    period: z.string(),
+    summary: z.string(),
+    tags: z.array(z.string()),
+    tone: z.enum(tones),
+    current: z.boolean().default(false),
+  }),
+});
+
+export const collections = { skills, work };

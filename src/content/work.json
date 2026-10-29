@@ -1,0 +1,42 @@
+[
+  {
+    "id": "domaine",
+    "company": "Domaine EMEA",
+    "role": "Frontend Engineer II",
+    "period": "2025 — Now",
+    "summary": "Building Shopify themes for e-commerce clients with Liquid, JavaScript and Tailwind CSS, as part of a delivery team alongside a tech lead and project manager.",
+    "tags": [
+      "Shopify",
+      "Liquid",
+      "TypeScript",
+      "Tailwind CSS",
+      "Vue.js",
+      "Nuxt"
+    ],
+    "tone": "primary",
+    "current": true
+  },
+  {
+    "id": "dutchdrops",
+    "company": "DutchDrops",
+    "role": "Frontend Developer",
+    "period": "2023 — 2025",
+    "summary": "My first developer role, where I grew from taking my first steps in the field to leading projects for major Dutch fashion brands and introducing company-wide code standards and workflows.",
+    "tags": ["Vue.js", "SCSS", "Shopware", "Storyblok"],
+    "tone": "accent"
+  },
+  {
+    "id": "marketing-pr",
+    "company": "Warner Music Group · Fource Entertainment · GOG · TicketSwap",
+    "role": "Marketing, PR & Community",
+    "period": "2018 — 2022",
+    "summary": "Before switching careers, I worked primarily in marketing and PR in the music and video games industries, running campaigns, social media and community programmes.",
+    "tags": [
+      "Marketing strategy",
+      "PR",
+      "Social media",
+      "Community management"
+    ],
+    "tone": "highlight"
+  }
+]
