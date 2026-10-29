@@ -22,13 +22,6 @@ const variantClasses: Record<Variant, string> = {
 };
 ---
 
-<Tag
-  class:list={[
-    'font-mono text-xs font-bold tracking-widest uppercase',
-    variantClasses[variant],
-    className,
-  ]}
-  {...attrs}
->
+<Tag class:list={['text-label', variantClasses[variant], className]} {...attrs}>
   <slot />
 </Tag>

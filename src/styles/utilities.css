@@ -2,6 +2,10 @@
   @apply mx-auto w-full max-w-7xl px-4 md:px-6;
 }
 
+@utility text-label {
+  @apply font-mono text-xs font-bold tracking-widest uppercase;
+}
+
 @utility stagger {
   @variant motion-safe {
     animation: var(--animate-fade-up);
