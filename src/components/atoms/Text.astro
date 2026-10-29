@@ -1,0 +1,38 @@
+---
+import type { Polymorphic } from 'astro/types';
+
+type TextTag = 'p' | 'span' | 'div';
+type Size = 'lead' | 'body';
+
+type Props<Tag extends TextTag> = Polymorphic<{ as: Tag }> & {
+  size?: Size;
+  muted?: boolean;
+};
+
+const {
+  as: Tag = 'p',
+  size: sizeProp,
+  muted = false,
+  class: className,
+  ...attrs
+} = Astro.props;
+
+const size: Size = sizeProp ?? 'body';
+
+const sizeClasses: Record<Size, string> = {
+  lead: 'text-lg',
+  body: 'text-base',
+};
+---
+
+<Tag
+  class:list={[
+    'max-w-prose text-pretty',
+    sizeClasses[size],
+    { 'text-muted-foreground': muted },
+    className,
+  ]}
+  {...attrs}
+>
+  <slot />
+</Tag>
