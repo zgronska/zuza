@@ -8,6 +8,12 @@ import Wordmark from '../molecules/Wordmark.astro';
 import MobileMenu from './MobileMenu.astro';
 
 const mobileMenuId = 'mobile-menu';
+
+function getNavLabelTransitionName(href: string) {
+  const slug = href.replace(/[^a-z0-9]+/gi, '-').replace(/^-|-$/g, '');
+
+  return `nav-label-${slug || 'home'}`;
+}
 ---
 
 <header
@@ -41,7 +47,7 @@ const mobileMenuId = 'mobile-menu';
                 )}
                 <span
                   class="[view-transition-class:nav-label]"
-                  transition:name={`nav-label-${label.toLowerCase()}`}
+                  transition:name={getNavLabelTransitionName(href)}
                 >
                   {label}
                 </span>
