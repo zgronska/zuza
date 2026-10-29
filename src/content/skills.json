@@ -1,0 +1,52 @@
+[
+  {
+    "id": "languages",
+    "title": "Languages",
+    "icon": "code",
+    "tone": "primary",
+    "span": "wide",
+    "items": ["HTML", "CSS", "JavaScript", "TypeScript", "Liquid"]
+  },
+  {
+    "id": "frameworks",
+    "title": "Frameworks",
+    "icon": "layers",
+    "tone": "accent",
+    "span": "narrow",
+    "items": [
+      "Vue.js",
+      "Nuxt",
+      "Astro",
+      "Node.js",
+      "SCSS",
+      "Tailwind CSS",
+      "Shopify",
+      "Shopware"
+    ]
+  },
+  {
+    "id": "accessibility-performance",
+    "title": "Accessibility & performance",
+    "icon": "accessibility",
+    "tone": "highlight",
+    "span": "narrow",
+    "items": ["Accessibility (WCAG)", "Responsive design", "Lighthouse"]
+  },
+  {
+    "id": "tooling",
+    "title": "Tooling",
+    "icon": "wrench",
+    "tone": "primary",
+    "span": "wide",
+    "items": [
+      "Vite",
+      "Git",
+      "GitHub Actions",
+      "CI/CD",
+      "Jira",
+      "Figma",
+      "Claude",
+      "Cursor"
+    ]
+  }
+]
