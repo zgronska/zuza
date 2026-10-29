@@ -68,7 +68,13 @@ const socialLinkEntries = Object.entries(SOCIAL_LINKS) as [
 </dialog>
 
 <script>
-  const desktopQuery = matchMedia('(min-width: 64rem)');
+  const hiddenMenuObserver = new ResizeObserver((entries) => {
+    entries.forEach(({ target }) => {
+      if (target instanceof HTMLDialogElement && !target.checkVisibility()) {
+        closeMenu(target, { restoreFocus: false });
+      }
+    });
+  });
 
   function getToggleFor(menu: HTMLDialogElement) {
     return document.querySelector<HTMLElement>(`[aria-controls="${menu.id}"]`);
@@ -95,6 +101,7 @@ const socialLinkEntries = Object.entries(SOCIAL_LINKS) as [
 
   function openMenu(menu: HTMLDialogElement) {
     menu.show();
+    hiddenMenuObserver.observe(menu);
     getToggleFor(menu)?.setAttribute('aria-expanded', 'true');
     setPageInert(menu, true);
     menu.querySelector('a')?.focus();
@@ -104,6 +111,7 @@ const socialLinkEntries = Object.entries(SOCIAL_LINKS) as [
     const toggle = getToggleFor(menu);
 
     menu.close();
+    hiddenMenuObserver.unobserve(menu);
     toggle?.setAttribute('aria-expanded', 'false');
     setPageInert(menu, false);
     if (restoreFocus) toggle?.focus();
@@ -129,6 +137,5 @@ const socialLinkEntries = Object.entries(SOCIAL_LINKS) as [
       getOpenMenus().forEach((menu) => closeMenu(menu));
   });
 
-  desktopQuery.addEventListener('change', closeOpenMenus);
   document.addEventListener('astro:before-preparation', closeOpenMenus);
 </script>
