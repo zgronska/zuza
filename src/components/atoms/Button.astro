@@ -27,7 +27,7 @@ const variantClasses: Record<Variant, string> = {
   primary:
     'bg-primary text-primary-foreground hover:bg-primary-hover active:bg-primary-active focus-visible:outline-primary-focus',
   accent:
-    'bg-accent text-accent-foreground hover:bg-accent-hover active:bg-accent-active focus-visible:outline-accent-focus',
+    'bg-accent text-accent-foreground hover:bg-accent-hover active:bg-accent-active',
   ghost:
     'bg-surface text-foreground hover:bg-background active:bg-background focus-visible:outline-primary-focus',
 };
@@ -37,7 +37,7 @@ const actionAttrs = getActionAttrs({ href, external, type });
 
 <Tag
   class:list={[
-    'inline-flex min-h-12 cursor-pointer items-center justify-center gap-2 rounded-sm border-3 border-border px-6 py-3 font-display leading-tight font-bold shadow-md hover:shadow-lg focus-visible:outline-3 focus-visible:outline-offset-3 active:shadow-none motion-safe:transition-[translate,box-shadow,background-color] motion-safe:duration-200 motion-safe:ease-out motion-safe:hover:-translate-0.5 motion-safe:active:translate-1 [&>svg]:shrink-0',
+    'inline-flex min-h-12 cursor-pointer items-center justify-center gap-2 rounded-sm border-3 border-border px-6 py-3 font-display leading-tight font-bold shadow-md focus-ring transition-lift hover:shadow-lg active:shadow-none motion-safe:hover:-translate-0.5 motion-safe:active:translate-1 [&>svg]:shrink-0',
     variantClasses[variant],
     className,
   ]}
