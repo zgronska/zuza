@@ -26,7 +26,7 @@ export default defineConfig({
       name: 'Space Mono',
       cssVariable: '--font-space-mono',
       provider: fontProviders.fontsource(),
-      weights: [400, 700],
+      weights: [700],
       styles: ['normal'],
       fallbacks: ['Courier New', 'monospace'],
     },
