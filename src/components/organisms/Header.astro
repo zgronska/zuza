@@ -1,0 +1,49 @@
+---
+import { NAV_LINKS, SOCIAL_LINKS } from '../../consts';
+import IconButton from '../atoms/IconButton.astro';
+import ThemeToggle from '../molecules/ThemeToggle.astro';
+import Wordmark from '../molecules/Wordmark.astro';
+
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+
+function isCurrentPage(href: string) {
+  return href === '/' ? currentPath === '/' : currentPath.startsWith(href);
+}
+---
+
+<header class="sticky top-4 z-40 site-container mt-4">
+  <div
+    class="flex items-center justify-between gap-4 rounded-full border-3 border-border bg-surface py-2 pr-2 pl-3 text-foreground shadow-md"
+  >
+    <Wordmark />
+
+    <nav aria-label="Main" class="max-lg:hidden">
+      <ul class="flex gap-1">
+        {
+          NAV_LINKS.map(({ label, href }) => (
+            <li>
+              <a
+                href={href}
+                aria-current={isCurrentPage(href) ? 'page' : undefined}
+                class="inline-flex min-h-11 items-center rounded-full border-2 border-transparent px-4.5 py-2 font-display font-bold hover:-translate-px hover:border-border hover:shadow-sm focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-accent-focus aria-[current=page]:border-border aria-[current=page]:bg-accent aria-[current=page]:text-accent-foreground aria-[current=page]:shadow-sm motion-safe:transition-[translate,box-shadow,background-color] motion-safe:duration-200 motion-safe:ease-out"
+              >
+                {label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div class="flex items-center gap-2">
+      {
+        SOCIAL_LINKS.map(({ label, href }) => (
+          <IconButton href={href} external class="max-lg:hidden">
+            {label}
+          </IconButton>
+        ))
+      }
+      <ThemeToggle />
+    </div>
+  </div>
+</header>

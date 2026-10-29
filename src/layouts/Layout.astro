@@ -3,6 +3,7 @@ import type { TransitionAnimationPair } from 'astro';
 import { Font } from 'astro:assets';
 import { ClientRouter } from 'astro:transitions';
 import Footer from '../components/organisms/Footer.astro';
+import Header from '../components/organisms/Header.astro';
 import ThemeScript from '../components/ThemeScript.astro';
 import { SITE_AUTHOR } from '../consts';
 import '../styles/global.css';
@@ -52,6 +53,7 @@ const pageTransition: TransitionAnimationPair = {
     >
       Skip to content
     </a>
+    <Header />
     <main
       id="main"
       class="flex-1"
