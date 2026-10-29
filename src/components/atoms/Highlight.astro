@@ -1,0 +1,29 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+type Variant = 'primary' | 'accent';
+
+interface Props extends HTMLAttributes<'span'> {
+  variant?: Variant;
+}
+
+const { variant: variantProp, class: className, ...attrs } = Astro.props;
+
+const variant: Variant = variantProp ?? 'primary';
+
+const variantClasses: Record<Variant, string> = {
+  primary: 'bg-primary text-primary-foreground',
+  accent: 'bg-accent text-accent-foreground',
+};
+---
+
+<span
+  class:list={[
+    'inline-block rounded-sm border-3 border-border px-[0.15em] shadow-sm',
+    variantClasses[variant],
+    className,
+  ]}
+  {...attrs}
+>
+  <slot />
+</span>
