@@ -16,7 +16,7 @@ const initials = SITE_AUTHOR.split(' ')
   href="/"
   aria-label={`${SITE_AUTHOR}, home`}
   class:list={[
-    'inline-flex min-h-11 items-center gap-2.5 rounded-full font-display text-lg font-extrabold tracking-tight text-foreground focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-accent-focus',
+    'inline-flex min-h-11 shrink-0 items-center gap-2.5 rounded-full font-display text-lg font-extrabold tracking-tight text-foreground focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-accent-focus',
     className,
   ]}
 >
@@ -26,5 +26,5 @@ const initials = SITE_AUTHOR.split(' ')
   >
     {initials}
   </span>
-  <span class="max-md:sr-only">{SITE_AUTHOR}</span>
+  <span class="whitespace-nowrap max-lg:sr-only">{SITE_AUTHOR}</span>
 </a>
