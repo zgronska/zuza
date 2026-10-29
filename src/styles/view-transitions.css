@@ -1,0 +1,3 @@
+::view-transition-group(*.nav-label) {
+  z-index: 1;
+}

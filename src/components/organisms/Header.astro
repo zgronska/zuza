@@ -39,7 +39,12 @@ const mobileMenuId = 'mobile-menu';
                     transition:name="nav-active"
                   />
                 )}
-                {label}
+                <span
+                  class="[view-transition-class:nav-label]"
+                  transition:name={`nav-label-${label.toLowerCase()}`}
+                >
+                  {label}
+                </span>
               </a>
             </li>
           ))
