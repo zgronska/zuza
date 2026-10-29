@@ -1,0 +1,37 @@
+---
+import type { Polymorphic } from 'astro/types';
+
+type CardTag = 'div' | 'article' | 'li';
+type Tone = 'surface' | 'primary' | 'accent' | 'highlight';
+
+type Props<Tag extends CardTag> = Polymorphic<{ as: Tag }> & {
+  tone?: Tone;
+};
+
+const {
+  as: Tag = 'div',
+  tone: toneProp,
+  class: className,
+  ...attrs
+} = Astro.props;
+
+const tone: Tone = toneProp ?? 'surface';
+
+const toneClasses: Record<Tone, string> = {
+  surface: 'bg-surface text-foreground',
+  primary: 'bg-primary text-primary-foreground',
+  accent: 'bg-accent text-accent-foreground',
+  highlight: 'bg-highlight text-highlight-foreground',
+};
+---
+
+<Tag
+  class:list={[
+    'rounded-lg border-3 border-border p-6 shadow-md hover:-translate-0.5 hover:shadow-lg motion-safe:transition-[translate,box-shadow] motion-safe:duration-200 motion-safe:ease-out',
+    toneClasses[tone],
+    className,
+  ]}
+  {...attrs}
+>
+  <slot />
+</Tag>
