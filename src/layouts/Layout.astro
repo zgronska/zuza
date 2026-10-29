@@ -1,0 +1,64 @@
+---
+import type { TransitionAnimationPair } from 'astro';
+import { Font } from 'astro:assets';
+import { ClientRouter } from 'astro:transitions';
+import ThemeScript from '../components/ThemeScript.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+
+const pageTransition: TransitionAnimationPair = {
+  old: {
+    name: 'fade-out',
+    duration: '420ms',
+    easing: 'ease-out',
+    fillMode: 'both',
+  },
+  new: {
+    name: 'fade-up',
+    duration: '420ms',
+    easing: 'ease-out',
+    fillMode: 'both',
+  },
+};
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{`${title} — Zuza Gronska`}</title>
+    {description && <meta name="description" content={description} />}
+    <ThemeScript />
+    <Font cssVariable="--font-bricolage-grotesque" preload />
+    <Font cssVariable="--font-newsreader" preload={[{ style: 'normal' }]} />
+    <Font cssVariable="--font-space-mono" />
+    <ClientRouter />
+  </head>
+  <body class="flex min-h-dvh flex-col bg-dot-grid">
+    <a
+      href="#main"
+      class="sr-only rounded-sm border-2 border-border bg-surface px-4 py-2 font-display font-bold shadow-sm focus-visible:not-sr-only focus-visible:fixed focus-visible:top-4 focus-visible:left-4 focus-visible:z-50 focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-accent-focus"
+    >
+      Skip to content
+    </a>
+    <main
+      id="main"
+      class="flex-1"
+      transition:animate={{
+        forwards: pageTransition,
+        backwards: pageTransition,
+      }}
+    >
+      <slot />
+    </main>
+  </body>
+</html>
