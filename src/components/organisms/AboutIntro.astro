@@ -1,4 +1,5 @@
 ---
+import headshot from '../../assets/headshot.jpg';
 import Highlight from '../atoms/Highlight.astro';
 import Sticker from '../atoms/Sticker.astro';
 import Text from '../atoms/Text.astro';
@@ -17,7 +18,9 @@ const headingId = 'about-title';
   <div class="grid items-center gap-10 md:grid-cols-12 md:gap-12">
     <MediaFrame
       variant="photo"
-      label="Portrait · 4:5"
+      label="Portrait of Zuza Gronska"
+      image={headshot}
+      priority
       class="w-full max-w-80 justify-self-center md:col-span-5 md:max-w-none"
     >
       <Sticker slot="sticker">That's me</Sticker>

@@ -1,5 +1,7 @@
 ---
 import { Image as ImageIcon } from '@lucide/astro';
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
 import type { HTMLAttributes } from 'astro/types';
 import Badge from '../atoms/Badge.astro';
 import Eyebrow from '../atoms/Eyebrow.astro';
@@ -9,9 +11,18 @@ type Variant = 'illustration' | 'photo';
 interface Props extends HTMLAttributes<'div'> {
   variant: Variant;
   label: string;
+  image?: ImageMetadata;
+  priority?: boolean;
 }
 
-const { variant: variantProp, label, class: className, ...attrs } = Astro.props;
+const {
+  variant: variantProp,
+  label,
+  image,
+  priority = false,
+  class: className,
+  ...attrs
+} = Astro.props;
 
 const variant: Variant = variantProp;
 
@@ -26,15 +37,24 @@ const shapeClasses = 'absolute border-3 border-border';
 
 <div class:list={['relative', className]} {...attrs}>
   <div
-    role="img"
-    aria-label={label}
+    role={image ? undefined : 'img'}
+    aria-label={image ? undefined : label}
     class:list={[
       'relative aspect-4/5 overflow-hidden rounded-lg border-3 border-border',
       variantClasses[variant],
     ]}
   >
     {
-      variant === 'illustration' ? (
+      image ? (
+        <Image
+          src={image}
+          alt={label}
+          widths={[320, 480, 640, 960]}
+          sizes="(min-width: 80rem) 32rem, (min-width: 48rem) 40vw, 20rem"
+          priority={priority}
+          class="size-full object-cover"
+        />
+      ) : variant === 'illustration' ? (
         <>
           <span
             class:list={[
