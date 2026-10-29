@@ -7,13 +7,17 @@ import BadgeList from '../molecules/BadgeList.astro';
 import Card from '../molecules/Card.astro';
 
 type Skill = CollectionEntry<'skills'>['data'];
+export type SkillCardSpan = 'wide' | 'narrow' | 'full';
 
 interface Props {
   skill: Skill;
   index: number;
+  span: SkillCardSpan;
 }
 
-const { skill, index } = Astro.props;
+const { skill, index, span: spanProp } = Astro.props;
+
+const span: SkillCardSpan = spanProp;
 
 const skillIcons: Record<Skill['icon'], typeof Code> = {
   code: Code,
@@ -22,9 +26,10 @@ const skillIcons: Record<Skill['icon'], typeof Code> = {
   wrench: Wrench,
 };
 
-const spanClasses: Record<Skill['span'], string> = {
+const spanClasses: Record<SkillCardSpan, string> = {
   wide: 'md:col-span-7',
   narrow: 'md:col-span-5',
+  full: 'md:col-span-12',
 };
 
 const SkillIcon = skillIcons[skill.icon];
@@ -33,7 +38,7 @@ const SkillIcon = skillIcons[skill.icon];
 <Card
   as="li"
   tone={skill.tone}
-  class:list={['flex stagger flex-col gap-5', spanClasses[skill.span]]}
+  class:list={['flex stagger flex-col gap-5', spanClasses[span]]}
   style={`--stagger-index: ${index}`}
 >
   <div class="flex items-center gap-3.5">

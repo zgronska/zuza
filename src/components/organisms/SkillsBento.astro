@@ -1,14 +1,26 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import SkillCard from './SkillCard.astro';
+import SkillCard, { type SkillCardSpan } from './SkillCard.astro';
 
 interface Props {
   skills: CollectionEntry<'skills'>[];
 }
 
 const { skills } = Astro.props;
+
+function getSpan(index: number): SkillCardSpan {
+  const isLastAlone = index === skills.length - 1 && index % 2 === 0;
+  if (isLastAlone) return 'full';
+
+  const isWideSlot = index % 4 === 0 || index % 4 === 3;
+  return isWideSlot ? 'wide' : 'narrow';
+}
 ---
 
 <ul class="grid gap-5 md:grid-cols-12 md:gap-6">
-  {skills.map(({ data }, index) => <SkillCard skill={data} index={index} />)}
+  {
+    skills.map(({ data }, index) => (
+      <SkillCard skill={data} index={index} span={getSpan(index)} />
+    ))
+  }
 </ul>

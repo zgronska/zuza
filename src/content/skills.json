@@ -5,7 +5,6 @@
     "title": "Languages",
     "icon": "code",
     "tone": "primary",
-    "span": "wide",
     "items": ["HTML", "CSS", "JavaScript", "TypeScript", "Liquid"]
   },
   {
@@ -14,7 +13,6 @@
     "title": "Frameworks",
     "icon": "layers",
     "tone": "accent",
-    "span": "narrow",
     "items": [
       "Vue.js",
       "Nuxt",
@@ -32,7 +30,6 @@
     "title": "Accessibility & performance",
     "icon": "accessibility",
     "tone": "highlight",
-    "span": "narrow",
     "items": ["Accessibility (WCAG)", "Responsive design", "Lighthouse"]
   },
   {
@@ -41,7 +38,6 @@
     "title": "Tooling",
     "icon": "wrench",
     "tone": "primary",
-    "span": "wide",
     "items": [
       "Vite",
       "Git",

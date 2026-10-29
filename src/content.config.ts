@@ -11,7 +11,6 @@ const skills = defineCollection({
     title: z.string(),
     icon: z.enum(['code', 'layers', 'accessibility', 'wrench']),
     tone: z.enum(tones),
-    span: z.enum(['wide', 'narrow']),
     items: z.array(z.string()).min(1),
   }),
 });
