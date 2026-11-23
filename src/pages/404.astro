@@ -1,11 +1,14 @@
 ---
 import BlockShape from '../components/atoms/BlockShape.astro';
 import Button from '../components/atoms/Button.astro';
+import Eyebrow from '../components/atoms/Eyebrow.astro';
+import Heading from '../components/atoms/Heading.astro';
 import Highlight from '../components/atoms/Highlight.astro';
 import LineShape from '../components/atoms/LineShape.astro';
 import StarShape from '../components/atoms/StarShape.astro';
+import Text from '../components/atoms/Text.astro';
 import ButtonRow from '../components/molecules/ButtonRow.astro';
-import PageHeading from '../components/molecules/PageHeading.astro';
+import Card from '../components/molecules/Card.astro';
 import Layout from '../layouts/Layout.astro';
 
 const headingId = 'not-found-title';
@@ -17,45 +20,50 @@ const headingId = 'not-found-title';
   background="stripes"
   noindex
 >
-  <section
-    aria-labelledby={headingId}
-    class="relative site-container py-16 md:py-24"
-  >
-    <span
-      class="pointer-events-none absolute top-14 right-4 w-24 -rotate-6 stagger-pop md:top-28 md:right-[10%] md:w-44"
-      style="--stagger-index: 0"
-      aria-hidden="true"
-    >
-      <LineShape
-        variant="squiggle"
-        tone="primary"
-        class="motion-safe:animate-drift"
-      />
-    </span>
-    <span
-      class="pointer-events-none absolute stagger-pop max-md:hidden md:top-14 md:right-[30%] md:w-14"
-      style="--stagger-index: 1"
-      aria-hidden="true"
-    >
-      <StarShape tone="highlight" class="motion-safe:animate-spin-slow" />
-    </span>
-    <span
-      class="pointer-events-none absolute stagger-pop max-md:hidden md:right-[4%] md:bottom-16 md:w-16 md:rotate-12"
-      style="--stagger-index: 2"
-      aria-hidden="true"
-    >
-      <BlockShape variant="square" tone="accent" />
-    </span>
-    <PageHeading
-      eyebrow="404 / Not found"
-      headingId={headingId}
-      lead="The page you're looking for doesn't exist or has moved."
-    >
-      Well, this is <Highlight variant="accent">awkward</Highlight>
-    </PageHeading>
-    <ButtonRow>
-      <Button href="/">Back to home</Button>
-      <Button href="/contact" variant="ghost">Get in touch</Button>
-    </ButtonRow>
+  <section aria-labelledby={headingId} class="py-16 md:py-20">
+    <div class="relative site-container">
+      <Card
+        hoverable={false}
+        elevated
+        class="flex flex-col items-center gap-8 px-5 py-12 text-center md:px-8 md:py-20"
+      >
+        <Eyebrow variant="chip">404 / Not found</Eyebrow>
+        <Heading as="h1" size="display" id={headingId} class="max-w-4xl">
+          Well, this is <Highlight variant="accent">awkward</Highlight>
+        </Heading>
+        <Text size="lead" muted>
+          The page you're looking for doesn't exist or has moved.
+        </Text>
+        <ButtonRow align="center" class="self-stretch md:self-center">
+          <Button href="/">Back to home</Button>
+          <Button href="/contact" variant="ghost">Get in touch</Button>
+        </ButtonRow>
+      </Card>
+      <span
+        class="pointer-events-none absolute -top-6 left-0 w-14 stagger-pop md:-top-8 md:-left-3 md:w-20"
+        style="--stagger-index: 0"
+        aria-hidden="true"
+      >
+        <StarShape tone="highlight" class="motion-safe:animate-spin-slow" />
+      </span>
+      <span
+        class="pointer-events-none absolute -top-5 right-1 w-11 rotate-12 stagger-pop md:-top-6 md:-right-3 md:w-16"
+        style="--stagger-index: 1"
+        aria-hidden="true"
+      >
+        <BlockShape variant="square" tone="accent" />
+      </span>
+      <span
+        class="pointer-events-none absolute right-0 -bottom-5 w-24 rotate-6 stagger-pop md:-right-2 md:-bottom-7 md:w-40"
+        style="--stagger-index: 2"
+        aria-hidden="true"
+      >
+        <LineShape
+          variant="squiggle"
+          tone="primary"
+          class="motion-safe:animate-drift"
+        />
+      </span>
+    </div>
   </section>
 </Layout>
