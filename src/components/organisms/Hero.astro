@@ -4,27 +4,41 @@ import Button from '../atoms/Button.astro';
 import Eyebrow from '../atoms/Eyebrow.astro';
 import Heading from '../atoms/Heading.astro';
 import Highlight from '../atoms/Highlight.astro';
-import MediaFrame from '../molecules/MediaFrame.astro';
+import HeroShapes from './HeroShapes.astro';
 
 const headingId = 'hero-title';
 ---
 
-<section
-  aria-labelledby={headingId}
-  class="site-container grid items-center gap-12 py-12 md:grid-cols-12 md:py-20"
->
-  <div class="flex flex-col items-start gap-6 md:col-span-7">
-    <Eyebrow variant="chip">01 / Hello</Eyebrow>
-    <Heading as="h1" size="hero" id={headingId}>
-      Hi, I am <Highlight>{SITE_AUTHOR}</Highlight>
-    </Heading>
-    <Heading as="p" size="title">Creative Frontend Developer</Heading>
-    <Button href="/contact" variant="accent">Get in touch</Button>
-  </div>
+<section aria-labelledby={headingId} class="overflow-x-clip">
+  <!-- Desktop: hero plus the marquee band fill the first screen. -->
+  <div
+    class="relative isolate site-container flex flex-col justify-center py-12 md:py-16 lg:min-h-[calc(100svh-15rem)]"
+  >
+    <HeroShapes />
 
-  <MediaFrame
-    variant="illustration"
-    label="TODO"
-    class="w-full max-w-80 justify-self-center md:col-span-5 md:max-w-none"
-  />
+    <div class="flex flex-col items-start gap-6 md:gap-8">
+      <Eyebrow variant="chip">01 / Hello</Eyebrow>
+
+      <Heading as="h1" size="jumbo" id={headingId}>
+        <span class="flex items-center gap-[0.25em] text-[0.5em]">
+          Hi, I am
+          <span
+            class="inline-block h-[0.55em] w-[2.2em] -rotate-3 rounded-full border-3 border-border bg-highlight shadow-sm"
+            aria-hidden="true"></span>
+        </span>
+        <Highlight class="mt-[0.12em] -rotate-1">
+          {SITE_AUTHOR}
+        </Highlight>
+      </Heading>
+
+      <div class="flex flex-wrap items-center gap-x-6 gap-y-4 pt-2">
+        <p
+          class="inline-flex -rotate-2 rounded-full border-3 border-border bg-surface px-5 py-2 font-display text-xl font-bold tracking-tight shadow-md md:text-2xl lg:px-8 lg:py-3 lg:text-4xl lg:font-extrabold lg:shadow-lg"
+        >
+          Creative Frontend Developer
+        </p>
+        <Button href="/contact" variant="accent">Get in touch</Button>
+      </div>
+    </div>
+  </div>
 </section>

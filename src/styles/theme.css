@@ -23,6 +23,7 @@
   --color-highlight-foreground: #1a1a1a;
 
   --text-hero: clamp(3.75rem, 6vw, 6rem);
+  --text-jumbo: clamp(3rem, 11vw, 9.5rem);
   --text-display: clamp(2.5rem, 7vw, 6rem);
 
   --shadow-sm: 2px 2px 0 0 var(--color-foreground);
@@ -32,6 +33,22 @@
 
   --animate-marquee: marquee 40s linear infinite;
   --animate-fade-up: fade-up 420ms ease-out both;
+  --animate-pop-in: pop-in 520ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  --animate-drift: drift 8s ease-in-out infinite alternate;
+  --animate-spin-slow: spin 24s linear infinite;
+
+  @keyframes pop-in {
+    from {
+      opacity: 0;
+      transform: scale(0.4);
+    }
+  }
+
+  @keyframes drift {
+    to {
+      transform: translate(6px, -10px);
+    }
+  }
 
   @keyframes marquee {
     from {

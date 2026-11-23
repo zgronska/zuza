@@ -15,6 +15,15 @@
   }
 }
 
+@utility stagger-pop {
+  @variant motion-safe {
+    &:not(:where([data-client-navigated] *)) {
+      animation: var(--animate-pop-in);
+      animation-delay: calc(var(--stagger-index, 0) * 90ms + 150ms);
+    }
+  }
+}
+
 @utility bg-dot-grid {
   background-image: radial-gradient(
     circle,

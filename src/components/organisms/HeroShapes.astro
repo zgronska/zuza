@@ -1,0 +1,124 @@
+---
+// Decorative Hardline shapes layered behind the hero type. Phones keep only the
+// circle, star and squiggle, tucked into the corners clear of the text.
+const block = 'absolute block border-3 border-border';
+const pop = 'absolute stagger-pop';
+const drift = 'motion-safe:animate-drift';
+const outline = 'stroke-foreground';
+---
+
+<div class="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
+  <!-- Big periwinkle circle, behind the end of the name -->
+  <span
+    class={`${pop} -top-2 -right-6 w-28 sm:w-40 lg:top-[8%] lg:right-[3%] lg:w-[clamp(12rem,24vw,21rem)]`}
+    style="--stagger-index: 0"
+  >
+    <span
+      class={`${block} relative aspect-square w-full rounded-full bg-accent shadow-lg ${drift}`}
+    ></span>
+  </span>
+
+  <!-- Surface card leaning on the circle -->
+  <span
+    class={`${pop} max-lg:hidden lg:right-[14%] lg:bottom-[14%] lg:h-[22%] lg:w-[clamp(10rem,18vw,16rem)]`}
+    style="--stagger-index: 1"
+  >
+    <span
+      class={`${block} relative size-full rotate-6 rounded-lg bg-surface shadow-md`}
+    ></span>
+  </span>
+
+  <!-- Yellow square -->
+  <span
+    class={`${pop} max-lg:hidden lg:top-[4%] lg:right-[34%] lg:w-[clamp(3.5rem,6vw,5.5rem)]`}
+    style="--stagger-index: 2"
+  >
+    <span
+      class={`${block} relative aspect-square w-full rotate-12 bg-highlight shadow-md`}
+    ></span>
+  </span>
+
+  <!-- Star, slow spin -->
+  <span
+    class={`${pop} top-10 right-32 w-10 sm:top-16 sm:right-52 lg:top-[2%] lg:right-auto lg:left-[34%] lg:w-[clamp(3rem,5vw,4.5rem)]`}
+    style="--stagger-index: 3"
+  >
+    <svg
+      viewBox="0 0 100 100"
+      class="block w-full drop-shadow-[3px_3px_0_var(--color-foreground)] motion-safe:animate-spin-slow"
+    >
+      <path
+        d="M50 4C55 38 62 45 96 50C62 55 55 62 50 96C45 62 38 55 4 50C38 45 45 38 50 4Z"
+        class={`fill-primary ${outline}`}
+        stroke-width="5"
+        stroke-linejoin="round"></path>
+    </svg>
+  </span>
+
+  <!-- Small star near the zigzag -->
+  <span
+    class={`${pop} max-lg:hidden lg:right-[4%] lg:bottom-[6%] lg:w-10`}
+    style="--stagger-index: 4"
+  >
+    <svg
+      viewBox="0 0 100 100"
+      class="block w-full drop-shadow-[2px_2px_0_var(--color-foreground)]"
+    >
+      <path
+        d="M50 4C55 38 62 45 96 50C62 55 55 62 50 96C45 62 38 55 4 50C38 45 45 38 50 4Z"
+        class={`fill-highlight ${outline}`}
+        stroke-width="6"
+        stroke-linejoin="round"></path>
+    </svg>
+  </span>
+
+  <!-- Squiggle -->
+  <span
+    class={`${pop} right-4 bottom-12 w-24 lg:top-[28%] lg:right-auto lg:bottom-auto lg:left-[39%] lg:w-[clamp(6rem,10vw,9rem)]`}
+    style="--stagger-index: 5"
+  >
+    <svg viewBox="0 0 134 48" fill="none" class={`block w-full ${drift}`}>
+      <path
+        d="M6 24C18 6 32 6 46 24S74 42 88 24 116 6 128 24"
+        class={outline}
+        stroke-width="13"
+        stroke-linecap="round"></path>
+      <path
+        d="M6 24C18 6 32 6 46 24S74 42 88 24 116 6 128 24"
+        class="stroke-accent"
+        stroke-width="6"
+        stroke-linecap="round"></path>
+    </svg>
+  </span>
+
+  <!-- Zigzag -->
+  <span
+    class={`${pop} max-lg:hidden lg:right-[20%] lg:-bottom-[2%] lg:w-[clamp(7rem,12vw,11rem)]`}
+    style="--stagger-index: 6"
+  >
+    <svg viewBox="0 0 132 44" fill="none" class="block w-full">
+      <polyline
+        points="6,36 26,8 46,36 66,8 86,36 106,8 126,36"
+        class={outline}
+        stroke-width="13"
+        stroke-linecap="round"
+        stroke-linejoin="round"></polyline>
+      <polyline
+        points="6,36 26,8 46,36 66,8 86,36 106,8 126,36"
+        class="stroke-primary"
+        stroke-width="6"
+        stroke-linecap="round"
+        stroke-linejoin="round"></polyline>
+    </svg>
+  </span>
+
+  <!-- Ring -->
+  <span
+    class={`${pop} max-lg:hidden lg:top-[30%] lg:right-[1%] lg:w-12`}
+    style="--stagger-index: 7"
+  >
+    <span
+      class={`${block} relative aspect-square w-full rounded-full bg-surface shadow-sm`}
+    ></span>
+  </span>
+</div>
