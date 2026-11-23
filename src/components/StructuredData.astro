@@ -1,0 +1,45 @@
+---
+import { getImage } from 'astro:assets';
+import { getCollection } from 'astro:content';
+import headshot from '../assets/headshot.jpg';
+import { SITE_AUTHOR, SITE_JOB_TITLE, SOCIAL_LINKS } from '../consts';
+
+// schema.org Person + WebSite, so search engines can tie the site to Zuza.
+const siteUrl = new URL('/', Astro.site).href;
+const currentJob = (await getCollection('work')).find(
+  ({ data }) => data.current,
+);
+const photo = await getImage({ src: headshot, width: 640, format: 'jpg' });
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Person',
+      '@id': `${siteUrl}#person`,
+      name: SITE_AUTHOR,
+      url: siteUrl,
+      image: new URL(photo.src, Astro.site).href,
+      jobTitle: SITE_JOB_TITLE,
+      ...(currentJob && {
+        worksFor: { '@type': 'Organization', name: currentJob.data.company },
+      }),
+      address: { '@type': 'PostalAddress', addressCountry: 'NL' },
+      sameAs: Object.values(SOCIAL_LINKS).map(({ href }) => href),
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${siteUrl}#website`,
+      name: SITE_AUTHOR,
+      url: siteUrl,
+      publisher: { '@id': `${siteUrl}#person` },
+    },
+  ],
+};
+---
+
+<script
+  is:inline
+  type="application/ld+json"
+  set:html={JSON.stringify(schema)}
+/>

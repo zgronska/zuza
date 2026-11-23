@@ -5,6 +5,8 @@ export interface SiteLink {
 
 export const SITE_AUTHOR = 'Zuza Gronska';
 
+export const SITE_JOB_TITLE = 'Creative Frontend Developer';
+
 export const NAV_LINKS: SiteLink[] = [
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },

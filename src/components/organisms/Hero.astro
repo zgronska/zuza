@@ -1,5 +1,5 @@
 ---
-import { SITE_AUTHOR } from '../../consts';
+import { SITE_AUTHOR, SITE_JOB_TITLE } from '../../consts';
 import Button from '../atoms/Button.astro';
 import Eyebrow from '../atoms/Eyebrow.astro';
 import Heading from '../atoms/Heading.astro';
@@ -30,7 +30,7 @@ const headingId = 'hero-title';
         <p
           class="inline-flex -rotate-2 rounded-full border-2 border-border bg-surface px-4 py-1.5 font-display text-lg font-bold tracking-tight shadow-sm md:text-xl"
         >
-          Creative Frontend Developer
+          {SITE_JOB_TITLE}
         </p>
         <Button href="/contact" class="min-h-14 px-8 text-lg">
           Get in touch
