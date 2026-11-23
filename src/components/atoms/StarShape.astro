@@ -1,0 +1,36 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import type { Tone } from '../../utils/toneClasses';
+
+type StarTone = Extract<Tone, 'primary' | 'accent' | 'highlight'>;
+
+interface Props extends HTMLAttributes<'svg'> {
+  tone?: StarTone;
+}
+
+const { tone: toneProp, class: className, ...attrs } = Astro.props;
+
+const tone: StarTone = toneProp ?? 'primary';
+
+const fillClasses: Record<StarTone, string> = {
+  primary: 'fill-primary',
+  accent: 'fill-accent',
+  highlight: 'fill-highlight',
+};
+---
+
+<svg
+  viewBox="0 0 100 100"
+  aria-hidden="true"
+  class:list={[
+    'block w-full drop-shadow-[3px_3px_0_var(--color-foreground)]',
+    className,
+  ]}
+  {...attrs}
+>
+  <path
+    d="M50 4C55 38 62 45 96 50C62 55 55 62 50 96C45 62 38 55 4 50C38 45 45 38 50 4Z"
+    class:list={['stroke-foreground', fillClasses[tone]]}
+    stroke-width="5"
+    stroke-linejoin="round"></path>
+</svg>

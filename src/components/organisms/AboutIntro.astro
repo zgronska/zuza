@@ -1,6 +1,8 @@
 ---
 import headshot from '../../assets/headshot.jpg';
 import Highlight from '../atoms/Highlight.astro';
+import LineShape from '../atoms/LineShape.astro';
+import StarShape from '../atoms/StarShape.astro';
 import Sticker from '../atoms/Sticker.astro';
 import Text from '../atoms/Text.astro';
 import Card from '../molecules/Card.astro';
@@ -8,44 +10,91 @@ import MediaFrame from '../molecules/MediaFrame.astro';
 import PageHeading from '../molecules/PageHeading.astro';
 
 const headingId = 'about-title';
+const shape = 'pointer-events-none absolute stagger-pop';
 ---
 
-<section aria-labelledby={headingId} class="site-container py-16 md:py-20">
-  <PageHeading eyebrow="02 / About" headingId={headingId}>
-    About <Highlight variant="accent">me</Highlight>
-  </PageHeading>
-
-  <div class="grid items-center gap-10 md:grid-cols-12 md:gap-12">
-    <MediaFrame
-      label="Portrait of Zuza Gronska"
-      image={headshot}
-      priority
-      class="w-full max-w-80 justify-self-center md:col-span-5 md:max-w-none"
-    >
-      <Sticker slot="sticker">That's me</Sticker>
-    </MediaFrame>
-
-    <Card
-      hoverable={false}
-      class="flex flex-col gap-8 md:col-span-6 md:col-start-7 md:p-8"
-    >
-      <Text size="lead">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat.
-      </Text>
-      <blockquote
-        class="-rotate-1 rounded-lg border-3 border-border bg-highlight px-7 py-6 text-2xl leading-snug text-highlight-foreground italic shadow-md"
+<section aria-labelledby={headingId} class="overflow-x-clip">
+  <div class="site-container py-16 md:py-20">
+    <PageHeading eyebrow="02 / About" headingId={headingId}>
+      About <Highlight variant="accent">me</Highlight>
+      <span
+        class="ms-[0.15em] inline-block w-[0.55em] align-top"
+        aria-hidden="true"
       >
-        “Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor.”
-      </blockquote>
-      <Text size="lead">
-        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-        officia deserunt mollit anim id est laborum. Curabitur pretium tincidunt
-        lacus, nulla gravida orci a odio.
-      </Text>
-    </Card>
+        <StarShape tone="highlight" class="motion-safe:animate-spin-slow" />
+      </span>
+    </PageHeading>
+
+    <div class="grid items-center gap-14 md:grid-cols-12 md:gap-12">
+      <!-- Photo, tilted on a coloured backing block -->
+      <div
+        class="relative w-full max-w-80 justify-self-center md:col-span-5 md:max-w-none"
+      >
+        <span
+          class="absolute inset-0 translate-3 rotate-4 rounded-lg border-3 border-border bg-primary shadow-md md:translate-4"
+          aria-hidden="true"></span>
+        <MediaFrame
+          label="Portrait of Zuza Gronska"
+          image={headshot}
+          priority
+          class="-rotate-2"
+        >
+          <Sticker slot="sticker">That's me</Sticker>
+        </MediaFrame>
+        <span
+          class={`${shape} -bottom-8 -left-6 w-28 md:-left-10 md:w-36`}
+          style="--stagger-index: 0"
+          aria-hidden="true"
+        >
+          <LineShape variant="squiggle" class="motion-safe:animate-drift" />
+        </span>
+      </div>
+
+      <!-- Text card; the quote breaks out past its edges -->
+      <div class="relative md:col-span-7 lg:col-span-6 lg:col-start-7">
+        <Card
+          hoverable={false}
+          elevated
+          class="flex flex-col gap-8 md:p-8 lg:p-10"
+        >
+          <Text size="lead" class="lg:text-xl">
+            Frontend developer with a strong eye for design, a focus on
+            accessibility and in-depth knowledge of modern CSS. I'm
+            framework-agnostic, but I have a soft spot for the Vue.js ecosystem.
+          </Text>
+          <blockquote
+            class="relative -mx-2 -rotate-2 rounded-lg border-3 border-border bg-highlight px-7 pt-8 pb-6 text-2xl leading-snug text-highlight-foreground italic shadow-lg md:-mx-6 md:px-10 lg:-mx-16 lg:text-3xl"
+          >
+            <span
+              class="absolute -top-6 left-6 grid size-12 place-items-center rounded-full border-3 border-border bg-primary font-display text-4xl leading-none font-extrabold text-primary-foreground not-italic shadow-sm"
+              aria-hidden="true">“</span
+            >
+            Have you considered rewriting this in Vue?
+          </blockquote>
+          <Text size="lead">
+            Other than coding, I enjoy some good old nerdy hobbies: video games,
+            D&D, listening to sad music, and hanging out inside with my two
+            cats.
+          </Text>
+        </Card>
+
+        <span
+          class={`${shape} -top-6 -right-3 w-12 md:-right-6 md:w-16`}
+          style="--stagger-index: 1"
+          aria-hidden="true"
+        >
+          <span
+            class="block aspect-square w-full rotate-12 border-3 border-border bg-accent shadow-md"
+          ></span>
+        </span>
+        <span
+          class={`${shape} -right-4 -bottom-7 w-24 md:-right-8 md:w-32`}
+          style="--stagger-index: 2"
+          aria-hidden="true"
+        >
+          <LineShape variant="zigzag" tone="primary" />
+        </span>
+      </div>
+    </div>
   </div>
 </section>

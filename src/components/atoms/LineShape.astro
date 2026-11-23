@@ -1,0 +1,55 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import type { Tone } from '../../utils/toneClasses';
+
+type Variant = 'squiggle' | 'zigzag';
+type LineTone = Extract<Tone, 'primary' | 'accent' | 'highlight'>;
+
+interface Props extends HTMLAttributes<'svg'> {
+  variant: Variant;
+  tone?: LineTone;
+}
+
+const {
+  variant: variantProp,
+  tone: toneProp,
+  class: className,
+  ...attrs
+} = Astro.props;
+
+const variant: Variant = variantProp;
+const tone: LineTone = toneProp ?? 'accent';
+
+// A thick foreground stroke under a thinner coloured one reads as a bordered line.
+const paths: Record<Variant, { viewBox: string; d: string }> = {
+  squiggle: {
+    viewBox: '0 0 134 48',
+    d: 'M6 24C18 6 32 6 46 24S74 42 88 24 116 6 128 24',
+  },
+  zigzag: {
+    viewBox: '0 0 132 44',
+    d: 'M6 36 26 8 46 36 66 8 86 36 106 8 126 36',
+  },
+};
+
+const strokeClasses: Record<LineTone, string> = {
+  primary: 'stroke-primary',
+  accent: 'stroke-accent',
+  highlight: 'stroke-highlight',
+};
+
+const { viewBox, d } = paths[variant];
+---
+
+<svg
+  viewBox={viewBox}
+  fill="none"
+  aria-hidden="true"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  class:list={['block w-full', className]}
+  {...attrs}
+>
+  <path d={d} class="stroke-foreground" stroke-width="13"></path>
+  <path d={d} class={strokeClasses[tone]} stroke-width="6"></path>
+</svg>
