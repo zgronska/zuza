@@ -27,7 +27,7 @@ src/
 │   └── ThemeScript.astro   Sets the theme before first paint
 ├── content/          skills.json and work.json
 ├── layouts/          Layout.astro: head, header, page transition, footer
-├── pages/            One file per route: /, /about, /skills, /work, /contact
+├── pages/            One file per route: /, /about, /skills, /work, /contact, plus 404
 ├── styles/
 │   ├── theme.css     Design tokens (@theme), dark theme values, keyframes
 │   ├── base.css      Page defaults
@@ -45,7 +45,7 @@ Components follow atomic design: pages compose organisms, organisms compose mole
 - **Skills:** `src/content/skills.json`. Cards are shown by `order`. The bento grid works out wide and narrow cards from position, and an odd last card spans the full row.
 - **Work history:** `src/content/work.json`, newest first by `order`. Mark the current job with `"current": true`.
 - **Links and contact details:** `src/consts.ts`.
-- **CV:** replace `public/cv.pdf`.
+- **CV:** replace `public/Zuza_Gronska_CV.pdf`, or change `CV_HREF` in `src/consts.ts` if the name changes.
 
 ## Theme
 
@@ -56,3 +56,4 @@ Components follow atomic design: pages compose organisms, organisms compose mole
 - Start the dev server in the background with `astro dev --background`; manage it with `astro dev status`, `astro dev logs` and `astro dev stop`.
 - Restart the dev server after changing `content.config.ts`. A running server can keep serving an empty or stale collection.
 - If a Tailwind class used only in a newly created file has no effect in dev, save `src/styles/global.css` to make the dev server rescan. Production builds always scan every file.
+- Pages are built as `about.html` and served at `/about` (no trailing slash) through `cleanUrls` in `vercel.json`, which also sets the security headers. The sitemap comes from `@astrojs/sitemap`.
