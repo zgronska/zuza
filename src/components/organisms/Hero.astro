@@ -20,12 +20,7 @@ const headingId = 'hero-title';
       <Eyebrow variant="chip">01 / Hello</Eyebrow>
 
       <Heading as="h1" size="jumbo" id={headingId}>
-        <span class="flex items-center gap-[0.25em] text-[0.5em]">
-          Hi, I am
-          <span
-            class="inline-block h-[0.55em] w-[2.2em] -rotate-3 rounded-full border-3 border-border bg-highlight shadow-sm"
-            aria-hidden="true"></span>
-        </span>
+        <span class="block text-[0.5em]">Hi, I am</span>
         <Highlight class="mt-[0.12em] -rotate-1">
           {SITE_AUTHOR}
         </Highlight>
@@ -33,11 +28,13 @@ const headingId = 'hero-title';
 
       <div class="flex flex-wrap items-center gap-x-6 gap-y-4 pt-2">
         <p
-          class="inline-flex -rotate-2 rounded-full border-3 border-border bg-surface px-5 py-2 font-display text-xl font-bold tracking-tight shadow-md md:text-2xl lg:px-8 lg:py-3 lg:text-4xl lg:font-extrabold lg:shadow-lg"
+          class="inline-flex -rotate-2 rounded-full border-2 border-border bg-surface px-4 py-1.5 font-display text-lg font-bold tracking-tight shadow-sm md:text-xl"
         >
           Creative Frontend Developer
         </p>
-        <Button href="/contact" variant="accent">Get in touch</Button>
+        <Button href="/contact" class="min-h-14 px-8 text-lg">
+          Get in touch
+        </Button>
       </div>
     </div>
   </div>

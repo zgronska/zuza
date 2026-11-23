@@ -3,7 +3,7 @@
 }
 
 @utility text-label {
-  @apply font-mono text-xs font-bold tracking-widest uppercase;
+  @apply font-mono text-[0.8125rem] font-bold tracking-wider uppercase;
 }
 
 @utility stagger {

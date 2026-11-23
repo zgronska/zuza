@@ -8,6 +8,6 @@
   }
 
   body {
-    @apply bg-background font-serif text-base leading-normal text-foreground;
+    @apply bg-background font-serif text-lg leading-normal text-foreground;
   }
 }
