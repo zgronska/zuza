@@ -5,7 +5,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://zuza.dev',
+  site: 'https://www.zuza.dev',
   fonts: [
     {
       name: 'Bricolage Grotesque',
