@@ -1,0 +1,45 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import type { Tone } from '../../utils/toneClasses';
+
+type Variant = 'circle' | 'square' | 'ring';
+type BlockTone = Extract<Tone, 'surface' | 'primary' | 'accent' | 'highlight'>;
+
+interface Props extends HTMLAttributes<'span'> {
+  variant: Variant;
+  tone?: BlockTone;
+}
+
+const {
+  variant: variantProp,
+  tone: toneProp,
+  class: className,
+  ...attrs
+} = Astro.props;
+
+const variant: Variant = variantProp;
+const tone: BlockTone = toneProp ?? (variant === 'ring' ? 'surface' : 'accent');
+
+const variantClasses: Record<Variant, string> = {
+  circle: 'rounded-full shadow-lg',
+  square: 'shadow-md',
+  ring: 'rounded-full shadow-sm',
+};
+
+const bgClasses: Record<BlockTone, string> = {
+  surface: 'bg-surface',
+  primary: 'bg-primary',
+  accent: 'bg-accent',
+  highlight: 'bg-highlight',
+};
+---
+
+<span
+  aria-hidden="true"
+  class:list={[
+    'block aspect-square w-full border-3 border-border',
+    variantClasses[variant],
+    bgClasses[tone],
+    className,
+  ]}
+  {...attrs}></span>

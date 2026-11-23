@@ -1,5 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
+import BlockShape from '../components/atoms/BlockShape.astro';
+import LineShape from '../components/atoms/LineShape.astro';
+import StarShape from '../components/atoms/StarShape.astro';
 import Highlight from '../components/atoms/Highlight.astro';
 import PageHeading from '../components/molecules/PageHeading.astro';
 import Timeline from '../components/organisms/Timeline.astro';
@@ -14,7 +17,35 @@ const headingId = 'work-title';
   title="Work"
   description="A timeline of Zuza Gronska's work experience."
 >
-  <section aria-labelledby={headingId} class="site-container py-16 md:py-20">
+  <section
+    aria-labelledby={headingId}
+    class="relative site-container py-16 md:py-20"
+  >
+    <span
+      class="pointer-events-none absolute top-14 right-4 w-24 rotate-6 stagger-pop md:top-56 md:right-[12%] md:w-32 lg:top-40 lg:right-[16%] lg:w-40"
+      style="--stagger-index: 0"
+      aria-hidden="true"
+    >
+      <LineShape variant="zigzag" tone="primary" />
+    </span>
+    <span
+      class="pointer-events-none absolute stagger-pop max-md:hidden md:top-20 md:right-[4%] md:w-28"
+      style="--stagger-index: 1"
+      aria-hidden="true"
+    >
+      <BlockShape
+        variant="circle"
+        tone="accent"
+        class="motion-safe:animate-drift"
+      />
+    </span>
+    <span
+      class="pointer-events-none absolute stagger-pop max-md:hidden md:top-14 md:right-[26%] md:w-11"
+      style="--stagger-index: 2"
+      aria-hidden="true"
+    >
+      <StarShape tone="highlight" class="motion-safe:animate-spin-slow" />
+    </span>
     <PageHeading
       eyebrow="04 / Work"
       headingId={headingId}

@@ -1,5 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
+import BlockShape from '../components/atoms/BlockShape.astro';
+import LineShape from '../components/atoms/LineShape.astro';
+import StarShape from '../components/atoms/StarShape.astro';
 import Highlight from '../components/atoms/Highlight.astro';
 import PageHeading from '../components/molecules/PageHeading.astro';
 import SkillsBento from '../components/organisms/SkillsBento.astro';
@@ -14,7 +17,35 @@ const headingId = 'skills-title';
   title="Skills"
   description="The languages, frameworks and tools Zuza Gronska works with."
 >
-  <section aria-labelledby={headingId} class="site-container py-16 md:py-20">
+  <section
+    aria-labelledby={headingId}
+    class="relative site-container py-16 md:py-20"
+  >
+    <span
+      class="pointer-events-none absolute top-14 right-4 w-24 -rotate-6 stagger-pop md:top-36 md:right-6 md:w-48"
+      style="--stagger-index: 0"
+      aria-hidden="true"
+    >
+      <LineShape
+        variant="squiggle"
+        tone="primary"
+        class="motion-safe:animate-drift"
+      />
+    </span>
+    <span
+      class="pointer-events-none absolute stagger-pop max-md:hidden md:top-16 md:right-[9%] md:w-14"
+      style="--stagger-index: 1"
+      aria-hidden="true"
+    >
+      <StarShape tone="accent" class="motion-safe:animate-spin-slow" />
+    </span>
+    <span
+      class="pointer-events-none absolute stagger-pop max-md:hidden md:top-24 md:right-[24%] md:w-12 md:rotate-12"
+      style="--stagger-index: 2"
+      aria-hidden="true"
+    >
+      <BlockShape variant="square" tone="highlight" />
+    </span>
     <PageHeading
       eyebrow="03 / Skills"
       headingId={headingId}

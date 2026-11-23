@@ -1,7 +1,10 @@
 ---
 import { Download, Mail } from '@lucide/astro';
 import { CONTACT_EMAIL, CV_HREF, SOCIAL_LINKS } from '../../consts';
+import BlockShape from '../atoms/BlockShape.astro';
 import Button from '../atoms/Button.astro';
+import LineShape from '../atoms/LineShape.astro';
+import StarShape from '../atoms/StarShape.astro';
 import Eyebrow from '../atoms/Eyebrow.astro';
 import Heading from '../atoms/Heading.astro';
 import Highlight from '../atoms/Highlight.astro';
@@ -14,7 +17,7 @@ const mailtoHref = `mailto:${CONTACT_EMAIL}`;
 ---
 
 <section aria-labelledby={headingId} class="py-16 md:py-20">
-  <div class="site-container">
+  <div class="relative site-container">
     <Card
       hoverable={false}
       elevated
@@ -41,5 +44,41 @@ const mailtoHref = `mailto:${CONTACT_EMAIL}`;
         </Button>
       </ButtonRow>
     </Card>
+    <span
+      class="pointer-events-none absolute -top-6 left-0 w-14 stagger-pop md:-top-8 md:-left-3 md:w-20"
+      style="--stagger-index: 0"
+      aria-hidden="true"
+    >
+      <StarShape tone="highlight" class="motion-safe:animate-spin-slow" />
+    </span>
+    <span
+      class="pointer-events-none absolute -top-5 right-1 w-11 rotate-12 stagger-pop md:-top-6 md:-right-3 md:w-16"
+      style="--stagger-index: 1"
+      aria-hidden="true"
+    >
+      <BlockShape variant="square" tone="primary" />
+    </span>
+    <span
+      class="pointer-events-none absolute stagger-pop max-md:hidden md:-bottom-8 md:left-[8%] md:w-20"
+      style="--stagger-index: 2"
+      aria-hidden="true"
+    >
+      <BlockShape
+        variant="circle"
+        tone="surface"
+        class="motion-safe:animate-drift"
+      />
+    </span>
+    <span
+      class="pointer-events-none absolute right-0 -bottom-5 w-24 rotate-6 stagger-pop md:-right-2 md:-bottom-7 md:w-40"
+      style="--stagger-index: 3"
+      aria-hidden="true"
+    >
+      <LineShape
+        variant="squiggle"
+        tone="highlight"
+        class="motion-safe:animate-drift"
+      />
+    </span>
   </div>
 </section>
