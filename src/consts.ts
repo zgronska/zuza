@@ -25,6 +25,6 @@ export type SocialLinkKey = keyof typeof SOCIAL_LINKS;
 
 export const CONTACT_EMAIL = 'zgronska@gmail.com';
 
-export const CV_HREF = '/cv.pdf';
+export const CV_HREF = '/Zuza_Gronska_CV.pdf';
 
 export const THEME_STORAGE_KEY = 'theme';
