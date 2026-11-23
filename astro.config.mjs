@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig, fontProviders } from 'astro/config';
 
+import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
@@ -9,6 +10,7 @@ export default defineConfig({
   // Match the slash-less nav links; vercel.json serves about.html at /about.
   trailingSlash: 'never',
   build: { format: 'file' },
+  integrations: [sitemap()],
   fonts: [
     {
       name: 'Bricolage Grotesque',
