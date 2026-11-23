@@ -14,7 +14,8 @@ import '../styles/global.css';
 type Background = 'dots' | 'stripes';
 
 interface Props {
-  title: string;
+  /** Page name, shown as "Title — Zuza Gronska". Omit on the home page. */
+  title?: string;
   description: string;
   background?: Background;
   image?: string;
@@ -30,7 +31,9 @@ const {
   noindex = false,
 } = Astro.props;
 
-const pageTitle = `${title} — ${SITE_AUTHOR}`;
+const pageTitle = title
+  ? `${title} — ${SITE_AUTHOR}`
+  : `${SITE_AUTHOR} — ${SITE_JOB_TITLE}`;
 const canonicalUrl = new URL(getPagePath(Astro.url.pathname), Astro.site);
 const imageUrl = new URL(image, Astro.site);
 
