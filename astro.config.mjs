@@ -6,6 +6,9 @@ import tailwindcss from '@tailwindcss/vite';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://www.zuza.dev',
+  // Match the slash-less nav links; vercel.json serves about.html at /about.
+  trailingSlash: 'never',
+  build: { format: 'file' },
   fonts: [
     {
       name: 'Bricolage Grotesque',

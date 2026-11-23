@@ -1,5 +1,7 @@
+import { getPagePath } from './getPagePath';
+
 export function isCurrentPage(pathname: string, href: string) {
-  const currentPath = pathname.replace(/\/$/, '') || '/';
+  const currentPath = getPagePath(pathname);
 
   if (href === '/') return currentPath === '/';
 
