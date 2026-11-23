@@ -17,6 +17,8 @@ interface Props {
   description: string;
   background?: Background;
   image?: string;
+  /** Keep the page out of search results (and omit its canonical). */
+  noindex?: boolean;
 }
 
 const {
@@ -24,6 +26,7 @@ const {
   description,
   background: backgroundProp,
   image = '/og.png',
+  noindex = false,
 } = Astro.props;
 
 const pageTitle = `${title} — ${SITE_AUTHOR}`;
@@ -62,7 +65,13 @@ const pageTransition: TransitionAnimationPair = {
     <meta name="generator" content={Astro.generator} />
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
-    <link rel="canonical" href={canonicalUrl} />
+    {
+      noindex ? (
+        <meta name="robots" content="noindex" />
+      ) : (
+        <link rel="canonical" href={canonicalUrl} />
+      )
+    }
     <link rel="sitemap" href="/sitemap-index.xml" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={SITE_AUTHOR} />

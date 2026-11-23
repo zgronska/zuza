@@ -1,0 +1,61 @@
+---
+import BlockShape from '../components/atoms/BlockShape.astro';
+import Button from '../components/atoms/Button.astro';
+import Highlight from '../components/atoms/Highlight.astro';
+import LineShape from '../components/atoms/LineShape.astro';
+import StarShape from '../components/atoms/StarShape.astro';
+import ButtonRow from '../components/molecules/ButtonRow.astro';
+import PageHeading from '../components/molecules/PageHeading.astro';
+import Layout from '../layouts/Layout.astro';
+
+const headingId = 'not-found-title';
+---
+
+<Layout
+  title="Page not found"
+  description="This page doesn't exist."
+  background="stripes"
+  noindex
+>
+  <section
+    aria-labelledby={headingId}
+    class="relative site-container py-16 md:py-24"
+  >
+    <span
+      class="pointer-events-none absolute top-14 right-4 w-24 -rotate-6 stagger-pop md:top-28 md:right-[10%] md:w-44"
+      style="--stagger-index: 0"
+      aria-hidden="true"
+    >
+      <LineShape
+        variant="squiggle"
+        tone="primary"
+        class="motion-safe:animate-drift"
+      />
+    </span>
+    <span
+      class="pointer-events-none absolute stagger-pop max-md:hidden md:top-14 md:right-[30%] md:w-14"
+      style="--stagger-index: 1"
+      aria-hidden="true"
+    >
+      <StarShape tone="highlight" class="motion-safe:animate-spin-slow" />
+    </span>
+    <span
+      class="pointer-events-none absolute stagger-pop max-md:hidden md:right-[4%] md:bottom-16 md:w-16 md:rotate-12"
+      style="--stagger-index: 2"
+      aria-hidden="true"
+    >
+      <BlockShape variant="square" tone="accent" />
+    </span>
+    <PageHeading
+      eyebrow="404 / Not found"
+      headingId={headingId}
+      lead="The page you're looking for doesn't exist or has moved."
+    >
+      Well, this is <Highlight variant="accent">awkward</Highlight>
+    </PageHeading>
+    <ButtonRow>
+      <Button href="/">Back to home</Button>
+      <Button href="/contact" variant="ghost">Get in touch</Button>
+    </ButtonRow>
+  </section>
+</Layout>
