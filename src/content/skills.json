@@ -22,11 +22,19 @@
     "items": ["WCAG", "Lighthouse"]
   },
   {
-    "id": "languages-frameworks",
+    "id": "platforms-apis",
     "order": 3,
+    "title": "Platforms & APIs",
+    "icon": "layers",
+    "tone": "highlight",
+    "items": ["Shopify", "Shopware", "Storyblok", "GraphQL", "Node.js"]
+  },
+  {
+    "id": "languages-frameworks",
+    "order": 4,
     "title": "Languages & frameworks",
     "icon": "code",
-    "tone": "accent",
+    "tone": "primary",
     "items": [
       "TypeScript",
       "JavaScript",
@@ -37,14 +45,6 @@
       "Astro",
       "Liquid"
     ]
-  },
-  {
-    "id": "platforms-apis",
-    "order": 4,
-    "title": "Platforms & APIs",
-    "icon": "layers",
-    "tone": "primary",
-    "items": ["Shopify", "Shopware", "Storyblok", "GraphQL", "Node.js"]
   },
   {
     "id": "testing-tooling",
