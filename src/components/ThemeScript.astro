@@ -1,8 +1,11 @@
 ---
 import { THEME_STORAGE_KEY } from '../consts';
+
+// Browser UI colour per theme; matches --color-background in theme.css.
+const THEME_COLORS = { light: '#fff4e0', dark: '#16130f' };
 ---
 
-<script is:inline define:vars={{ THEME_STORAGE_KEY }}>
+<script is:inline define:vars={{ THEME_STORAGE_KEY, THEME_COLORS }}>
   function getThemeStorage() {
     try {
       return window.localStorage;
@@ -20,10 +23,23 @@ import { THEME_STORAGE_KEY } from '../consts';
       : 'light';
   }
 
+  function syncThemeColor() {
+    const theme = document.documentElement.dataset.theme;
+    document
+      .querySelector('meta[name="theme-color"]')
+      ?.setAttribute('content', THEME_COLORS[theme] ?? THEME_COLORS.light);
+  }
+
   function applyTheme() {
     document.documentElement.dataset.theme = resolveTheme(getThemeStorage());
+    syncThemeColor();
   }
 
   applyTheme();
   document.addEventListener('astro:after-swap', applyTheme);
+  // The theme toggle only changes data-theme; follow it here.
+  new MutationObserver(syncThemeColor).observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['data-theme'],
+  });
 </script>
