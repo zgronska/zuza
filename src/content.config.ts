@@ -9,7 +9,7 @@ const skills = defineCollection({
   schema: z.object({
     order: z.number().int(),
     title: z.string(),
-    icon: z.enum(['code', 'layers', 'accessibility', 'wrench']),
+    icon: z.enum(['code', 'layers', 'accessibility', 'wrench', 'palette']),
     tone: z.enum(tones),
     items: z.array(z.string()).min(1),
   }),

@@ -1,5 +1,5 @@
 ---
-import { Accessibility, Code, Layers, Wrench } from '@lucide/astro';
+import { Accessibility, Code, Layers, Palette, Wrench } from '@lucide/astro';
 import type { CollectionEntry } from 'astro:content';
 import Heading from '../atoms/Heading.astro';
 import IconTile from '../atoms/IconTile.astro';
@@ -24,6 +24,7 @@ const skillIcons: Record<Skill['icon'], typeof Code> = {
   layers: Layers,
   accessibility: Accessibility,
   wrench: Wrench,
+  palette: Palette,
 };
 
 const spanClasses: Record<SkillCardSpan, string> = {

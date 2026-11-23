@@ -1,50 +1,65 @@
 [
   {
-    "id": "languages",
+    "id": "design-css",
     "order": 1,
-    "title": "Languages",
-    "icon": "code",
+    "title": "Design & CSS",
+    "icon": "palette",
     "tone": "primary",
-    "items": ["HTML", "CSS", "JavaScript", "TypeScript", "Liquid"]
-  },
-  {
-    "id": "frameworks",
-    "order": 2,
-    "title": "Frameworks",
-    "icon": "layers",
-    "tone": "accent",
     "items": [
-      "Vue.js",
-      "Nuxt",
-      "Astro",
-      "Node.js",
-      "SCSS",
+      "Modern CSS",
       "Tailwind CSS",
-      "Shopify",
-      "Shopware"
+      "SCSS",
+      "Responsive design",
+      "Figma"
     ]
   },
   {
     "id": "accessibility-performance",
-    "order": 3,
+    "order": 2,
     "title": "Accessibility & performance",
     "icon": "accessibility",
     "tone": "highlight",
-    "items": ["Accessibility (WCAG)", "Responsive design", "Lighthouse"]
+    "items": ["WCAG", "Lighthouse"]
   },
   {
-    "id": "tooling",
-    "order": 4,
-    "title": "Tooling",
-    "icon": "wrench",
-    "tone": "primary",
+    "id": "languages-frameworks",
+    "order": 3,
+    "title": "Languages & frameworks",
+    "icon": "code",
+    "tone": "accent",
     "items": [
+      "TypeScript",
+      "JavaScript",
+      "HTML",
+      "Vue.js (Composition API)",
+      "Nuxt",
+      "Pinia",
+      "Astro",
+      "Liquid"
+    ]
+  },
+  {
+    "id": "platforms-apis",
+    "order": 4,
+    "title": "Platforms & APIs",
+    "icon": "layers",
+    "tone": "primary",
+    "items": ["Shopify", "Shopware", "Storyblok", "GraphQL", "Node.js"]
+  },
+  {
+    "id": "testing-tooling",
+    "order": 5,
+    "title": "Testing & tooling",
+    "icon": "wrench",
+    "tone": "accent",
+    "items": [
+      "Vitest",
+      "Playwright",
       "Vite",
-      "Git",
+      "Git/GitHub",
       "GitHub Actions",
       "CI/CD",
       "Jira",
-      "Figma",
       "Claude",
       "Cursor"
     ]

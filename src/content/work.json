@@ -5,14 +5,15 @@
     "company": "Domaine EMEA",
     "role": "Frontend Engineer II",
     "period": "2025 — Now",
-    "summary": "Building Shopify themes for e-commerce clients with Liquid, JavaScript and Tailwind CSS, as part of a delivery team alongside a tech lead and project manager.",
+    "summary": "Delivering Shopify themes and headless Vue.js/Nuxt storefronts for brands including Beerwulf, Farmer Gracy and Karl Lagerfeld. I co-lead the team's base theme, built a CLI on top of the Shopify CLI for managing metafields and metaobjects through GraphQL, and develop custom Shopify apps in React.",
     "tags": [
       "Shopify",
       "Liquid",
       "TypeScript",
-      "Tailwind CSS",
       "Vue.js",
-      "Nuxt"
+      "Nuxt",
+      "GraphQL",
+      "React"
     ],
     "tone": "primary",
     "current": true
@@ -23,17 +24,17 @@
     "company": "DutchDrops",
     "role": "Frontend Developer",
     "period": "2023 — 2025",
-    "summary": "My first developer role, where I grew from taking my first steps in the field to leading projects for major Dutch fashion brands and introducing company-wide code standards and workflows.",
-    "tags": ["Vue.js", "SCSS", "Shopware", "Storyblok"],
+    "summary": "My first developer role, where I took on project lead responsibilities within a year, leading frontend builds for Dutch fashion brands including Nubikk, Van Dijk Waalwijk and Siebel. I also set up the team's development workflow: branch protection, pull requests, linting, CI/CD and automated changelogs.",
+    "tags": ["Vue.js", "SCSS", "Shopware", "Storyblok", "CI/CD"],
     "tone": "accent"
   },
   {
     "id": "marketing-pr",
     "order": 3,
-    "company": "Warner Music Group · Fource Entertainment · GOG · TicketSwap",
+    "company": "Warner Music Group · Fource Entertainment · CD Projekt Group · TicketSwap",
     "role": "Marketing, PR & Community",
     "period": "2018 — 2022",
-    "summary": "Before switching careers, I worked primarily in marketing and PR in the music and video games industries, running campaigns, social media and community programmes.",
+    "summary": "Before switching careers, I ran campaigns, PR, social media and community programmes in the music and games industries, working closely with audiences, artists and stakeholders.",
     "tags": [
       "Marketing strategy",
       "PR",
